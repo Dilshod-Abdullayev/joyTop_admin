@@ -1,0 +1,992 @@
+{
+  "common": {
+    "dashboard": "Boshqaruv paneli",
+    "properties": "Ko'chmas mulk",
+    "users": "Foydalanuvchilar",
+    "categories": "Kategoriyalar",
+    "features": "Xususiyatlar",
+    "cities": "Shaharlar",
+    "districts": "Tumanlar",
+    "features": "Xususiyatlar",
+    "analytics": "Tahlil",
+    "payments": "To'lovlar",
+    "tariffs": "Tariflar",
+    "banners": "Bannerlar",
+    "pages": "Sahifalar",
+    "settings": "Sozlamalar",
+    "search": "Qidirish",
+    "language": "Til",
+    "profile": "Profil",
+    "logout": "Chiqish",
+    "notifications": "Bildirishnomalar",
+    "retry": "Qayta urinish",
+    "refresh": "Yangilash",
+    "cancel": "Bekor qilish",
+    "create": "Yaratish",
+    "update": "Yangilash",
+    "delete": "O'chirish",
+    "creating": "Yaratilmoqda...",
+    "updating": "Yangilanmoqda...",
+    "deleting": "O'chirilmoqda...",
+    "save": "Saqlash",
+    "saving": "Saqlanmoqda...",
+    "loading": "Yuklanmoqda...",
+    "id": "ID",
+    "role": "Rol",
+    "details": "Tafsilotlar",
+    "error": "Xatolik",
+    "errors": {
+      "loadingError": "Yuklashda xatolik"
+    },
+    "actions": {
+      "edit": "Tahrirlash",
+      "delete": "O'chirish",
+      "cancel": "Bekor qilish"
+    }
+  },
+  "search": {
+    "placeholder": "Ko'chmas mulk, foydalanuvchilar, kategoriyalar bo'yicha qidirish...",
+    "searching": "Qidirilmoqda...",
+    "noResults": "Hech narsa topilmadi",
+    "types": {
+      "property": "Ko'chmas mulk",
+      "user": "Foydalanuvchi",
+      "category": "Kategoriya",
+      "city": "Shahar",
+      "tariff": "Tarif"
+    },
+    "tips": {
+      "title": "Qidirish:",
+      "properties": "Ko'chmas mulk",
+      "users": "Foydalanuvchilar",
+      "cities": "Shaharlar",
+      "categories": "Kategoriyalar"
+    }
+  },
+  "navigation": {
+    "overview": "Umumiy ma'lumot",
+    "management": "Boshqaruv",
+    "reports": "Hisobotlar",
+    "system": "Tizim"
+  },
+  "actions": {
+    "add": "Qo'shish",
+    "edit": "Tahrirlash",
+    "delete": "O'chirish",
+    "save": "Saqlash",
+    "cancel": "Bekor qilish",
+    "view": "Ko'rish"
+  },
+  "dashboard": {
+    "title": "Boshqaruv paneli",
+    "subtitle": "Platforma statistikasi va tahlili bo'yicha ko'rinish",
+    "stats": {
+      "totalUsers": "Jami foydalanuvchilar",
+      "totalListings": "Jami e'lonlar",
+      "views": "Ko'rishlar",
+      "chats": "Chatlar",
+      "avgPrice": "O'rtacha narx",
+      "subscriptions": "Obunalar",
+      "totalRevenue": "Jami daromad",
+      "failedPayments": "Muvaffaqiyatsiz to'lovlar"
+    },
+    "changes": {
+      "perMonth": "oyiga",
+      "active": "faol",
+      "favorites": "sevimli",
+      "promoted": "targ'ib qilingan",
+      "newListings": "yangi e'lonlar",
+      "expiring3Days": "3 kunda tugaydi"
+    },
+    "charts": {
+      "revenue30Days": "Kunlik daromad",
+      "newUsers": "Kunlik yangi foydalanuvchilar",
+      "subscriptions": "Kunlik yangi obunalar",
+      "revenueTrend": "Daromad trendi",
+      "noData": "Ko'rsatish uchun ma'lumot yo'q"
+    },
+    "additional": {
+      "popularCategory": "Mashhur kategoriya",
+      "activeUser": "Faol foydalanuvchi",
+      "popularListing": "Mashhur e'lon",
+      "noData": "Ma'lumot yo'q"
+    },
+    "tariffs": {
+      "title": "Tariflar bo'yicha taqsimot",
+      "users": "foydalanuvchi"
+    },
+    "errors": {
+      "loadingError": "Yuklash xatosi",
+      "failedToLoad": "Dashboard ma'lumotlarini yuklashda xatolik yuz berdi"
+    },
+    "units": {
+      "million": "M",
+      "currency": "UZS",
+      "dollar": "$"
+    },
+    "chartLabels": {
+      "revenue": "Daromad",
+      "users": "Foydalanuvchilar",
+      "subscriptions": "Obunalar",
+      "tariffs": "Tariflar"
+    },
+    "chartTooltips": {
+      "users": "foydalanuvchi",
+      "subscriptions": "obuna"
+    },
+    "chartSummary": {
+      "total": "Jami",
+      "average": "O'rtacha"
+    },
+    "trendChart": {
+      "revenue": "Daromad",
+      "trend": "Trend",
+      "growth": "O'sish"
+    }
+  },
+  "auth": {
+    "login": "Tizimga kirish",
+    "phone": "Telefon raqami",
+    "password": "Parol",
+    "enter": "Kirish",
+    "entering": "Kirish...",
+    "phonePlaceholder": "998901234567",
+    "passwordPlaceholder": "Parolni kiriting",
+    "logout": "Chiqish",
+    "profile": "Profil",
+    "balance": "Balans",
+    "contacts": "Aloqa",
+    "admin": "Administrator",
+    "user": "Foydalanuvchi"
+  },
+  "properties": {
+    "title": "Ko'chmas mulkni boshqarish",
+    "subtitle": "Ko'chmas mulk e'lonlarini boshqarish",
+
+    "searchPlaceholder": "Nomi yoki tavsifi bo'yicha qidirish...",
+    "filters": {
+      "title": "Filtrlash",
+      "category": "Kategoriya",
+      "city": "Shahar",
+      "transactionType": "Bitim turi",
+      "priceRange": "Narx oralig'i",
+      "rooms": "Xonalar soni",
+      "status": "Holat",
+      "apply": "Qo'llash",
+      "clear": "Tozalash"
+    },
+    "sorting": {
+      "title": "Saralash",
+      "date": "Sana bo'yicha",
+      "price": "Narx bo'yicha",
+      "views": "Ko'rishlar bo'yicha",
+      "likes": "Yoqtirishlar bo'yicha"
+    },
+    "actions": {
+      "view": "Ko'rish",
+      "edit": "Tahrirlash",
+      "delete": "O'chirish",
+      "activate": "Faollashtirish",
+      "deactivate": "Faolsizlashtirish",
+      "promote": "Targ'ib qilish"
+    },
+    "status": {
+      "active": "Faol",
+      "inactive": "Faol emas",
+      "pending": "Ko'rib chiqishda",
+      "rejected": "Rad etildi"
+    },
+    "transactionTypes": {
+      "sale": "Sotish",
+      "rent": "Ijaraga berish",
+      "exchange": "Almashtirish"
+    },
+    "noProperties": "E'lonlar topilmadi",
+    "loading": "E'lonlar yuklanmoqda...",
+    "error": "E'lonlarni yuklashda xatolik",
+    "details": {
+      "description": "Tavsif",
+      "specifications": "Xususiyatlar",
+      "additionalSpecs": "Qo'shimcha xususiyatlar",
+      "features": "Xususiyatlar",
+      "nearbyAmenities": "Yaqin atrofda joylashgan",
+      "price": "Narx",
+      "mortgageAvailable": "Ipoteka mavjud",
+      "owner": "Egasi",
+      "location": "Joylashuv",
+      "statistics": "Statistika",
+      "propertyDetails": "Tafsilotlar",
+      "contacts": "Aloqa",
+      "backToList": "Ro'yxatga qaytish",
+      "loadingError": "Yuklashda xatolik"
+    },
+    "specs": {
+      "area": "Maydon",
+      "livingArea": "Yashash maydoni",
+      "lotArea": "Hovli maydoni",
+      "rooms": "Xonalar",
+      "bedrooms": "Yotoqxonalar",
+      "bathrooms": "Hammomlar",
+      "toilets": "Hojatxonalar",
+      "balconies": "Balkonlar",
+      "floor": "Qavat",
+      "totalFloors": "dan",
+      "age": "Yoshi",
+      "ceilingHeight": "Shift balandligi",
+      "furnished": "Mebellar bilan",
+      "airConditioning": "Konditsioner",
+      "parking": "Avtomobil to'xtash joyi",
+      "builtInKitchen": "O'rnatilgan oshxona",
+      "elevator": "Lift",
+      "security": "Xavfsizlik",
+      "garage": "Garaj",
+      "renovation": "Ta'mirlash",
+      "heating": "Isitish",
+      "hotWater": "Issiq suv",
+      "energyEfficiency": "Energiya samaradorligi",
+      "noiseLevel": "Shovqin darajasi",
+      "yes": "Ha",
+      "no": "Yo'q",
+      "years": "yil",
+      "meters": "m",
+      "squareMeters": "m²"
+    },
+    "user": {
+      "phone": "Telefon",
+      "additionalPhone": "Qo'shimcha telefon",
+      "bio": "O'zi haqida",
+      "balance": "Balans",
+      "role": "Rol"
+    },
+    "metrics": {
+      "views": "Ko'rishlar",
+      "favorites": "Sevimlilarda",
+      "shares": "Ulashishlar"
+    },
+    "pagination": {
+      "showing": "Ko'rsatilmoqda",
+      "of": "dan",
+      "properties": "e'lon",
+      "results": "natija",
+      "show": "Ko'rsatish",
+      "previous": "Oldingi",
+      "next": "Keyingi"
+    },
+    "edit": {
+      "title": "E'lonni tahrirlash",
+      "saving": "Saqlanmoqda...",
+      "save": "Saqlash",
+      "basicInfo": "Asosiy ma'lumot",
+      "titlePlaceholder": "E'lon nomini kiriting",
+      "category": "Kategoriya",
+      "transactionType": "Bitim turi",
+      "price": "Narx",
+      "description": "Tavsif",
+      "descriptionPlaceholder": "Ko'chmas mulk haqida batafsil ma'lumot...",
+      "mortgageAvailable": "Ipoteka mavjud",
+      "active": "Faol",
+      "specifications": "Xususiyatlar",
+      "features": "Xususiyatlar",
+      "location": "Joylashuv",
+      "media": "Media fayllar",
+      "photos": "Rasmlar",
+      "video": "Video URL",
+      "videoPlaceholder": "https://example.com/video.mp4",
+      "city": "Shahar",
+      "district": "Tuman",
+      "districtPlaceholder": "Tuman ID si",
+      "buildingNumber": "Bino raqami",
+      "buildingNumberPlaceholder": "Masalan: 123",
+      "nearbyAmenities": "Yaqin atrofda joylashgan",
+      "amenityPlaceholder": "Masalan: Maktab, Do'kon",
+      "add": "Qo'shish",
+      "notSpecified": "Ko'rsatilmagan",
+      "categories": {
+        "houses": "Uylar",
+        "offices": "Ofislar",
+        "land": "Er uchastkalari",
+        "rentalHouses": "Ijara uchun uylar",
+        "rentalVillas": "Ijara uchun villalar",
+        "saleApartments": "Sotuv uchun kvartiralar",
+        "commercial": "Savdo binolari"
+      },
+      "transactionTypes": {
+        "sale": "Sotuv",
+        "rent": "Ijara",
+        "exchange": "Almashtirish"
+      },
+      "renovationTypes": {
+        "none": "Ta'mirlashsiz",
+        "cosmetic": "Kosmetik",
+        "capital": "Kapital",
+        "euro": "Evrota'mirlash"
+      },
+      "heatingTypes": {
+        "none": "Yo'q",
+        "gas": "Gaz",
+        "electric": "Elektrik",
+        "central": "Markaziy"
+      },
+      "featureNames": {
+        "kitchen": "Oshxona",
+        "garage": "Garaj",
+        "garden": "Bog'",
+        "pool": "Basseyn",
+        "terrace": "Terrasa/Balkon",
+        "security": "Xavfsizlik",
+        "elevator": "Lift",
+        "fireplace": "Ochoq",
+        "storage": "Ombor",
+        "laundry": "Prachka",
+        "playground": "Bolalar maydonchasi",
+        "internet": "Internet",
+        "solarPanels": "Quyosh panellari",
+        "disabledAccess": "Nogironlar uchun kirish",
+        "petsAllowed": "Uy hayvonlari ruxsat etiladi"
+      },
+      "cities": {
+        "tashkent": "Toshkent",
+        "samarkand": "Samarqand",
+        "khorezm": "Xorazm",
+        "bukhara": "Buxoro",
+        "jizzakh": "Jizzax",
+        "tashkentRegion": "Toshkent viloyati",
+        "tashkentCity": "Toshkent (shahar)",
+        "namangan": "Namangan",
+        "andijan": "Andijan"
+      }
+    }
+  },
+  "cities": {
+    "page": {
+      "title": "Shaharlarni boshqarish",
+      "description": "Tizimda shaharlarni yarating, tahrirlang va boshqaring"
+    },
+    "search": {
+      "title": "Shaharlarni qidirish",
+      "placeholder": "Shahar nomi bo'yicha qidirish...",
+      "results": "{total} ta shahardan {count} tasi topildi"
+    },
+    "table": {
+      "title": "Shaharlar ro'yxati",
+      "name": "Nomi",
+      "id": "ID",
+      "actions": "Amallar",
+      "noCities": "Shaharlar topilmadi",
+      "noCitiesDescription": "Ishni boshlash uchun birinchi shaharni yarating"
+    },
+    "fields": {
+      "name": "Shahar nomi"
+    },
+    "placeholders": {
+      "cityName": "Shahar nomini kiriting"
+    },
+    "validation": {
+      "nameRequired": "Shahar nomi majburiy",
+      "maxLength": "Maksimal {max} belgi"
+    },
+    "actions": {
+      "addCity": "Shahar qo'shish",
+      "create": "Yaratish",
+      "creating": "Yaratilmoqda...",
+      "update": "Yangilash",
+      "updating": "Yangilanmoqda...",
+      "delete": "O'chirish",
+      "deleting": "O'chirilmoqda..."
+    },
+    "modals": {
+      "create": {
+        "title": "Yangi shahar yaratish"
+      },
+      "edit": {
+        "title": "Shaharni tahrirlash"
+      },
+      "delete": {
+        "title": "Shaharni o'chirish",
+        "confirmation": "'{name}' shaharni o'chirishni xohlaysizmi?",
+        "warning": "Bu amalni qaytarib bo'lmaydi. Shahar abadiy o'chiriladi."
+      }
+    },
+    "errors": {
+      "createFailed": "Shaharni yaratishda xatolik yuz berdi",
+      "updateFailed": "Shaharni yangilashda xatolik yuz berdi",
+      "deleteFailed": "Shaharni o'chirishda xatolik yuz berdi"
+    }
+  },
+  "users": {
+    "page": {
+      "title": "Foydalanuvchilarni boshqarish",
+      "description": "Tizim foydalanuvchilarini ko'ring, tahrirlang va boshqaring"
+    },
+    "search": {
+      "placeholder": "Foydalanuvchilarni qidirish...",
+      "filters": "Filtrlari",
+      "addUser": "Foydalanuvchi qo'shish",
+      "clearFilters": "Filtrlarni tozalash"
+    },
+    "filters": {
+      "role": "Roli",
+      "allRoles": "Barcha rollar",
+      "status": "Holati",
+      "allStatuses": "Barcha holatlar",
+      "language": "Tili",
+      "allLanguages": "Barcha tillar"
+    },
+    "roles": {
+      "admin": "Administrator",
+      "moderator": "Moderator",
+      "user": "Foydalanuvchi"
+    },
+    "status": {
+      "active": "Faol",
+      "inactive": "Faol emas",
+      "banned": "Bloklangan"
+    },
+    "languages": {
+      "russian": "Rus tili",
+      "uzbek": "O'zbek tili"
+    },
+    "table": {
+      "user": "Foydalanuvchi",
+      "role": "Roli",
+      "status": "Holati",
+      "balance": "Balansi",
+      "contacts": "Aloqa",
+      "created": "Yaratilgan",
+      "actions": "Amallar",
+      "noUsers": "Foydalanuvchilar topilmadi",
+      "noUsersDescription": "Filtrlarni o'zgartiring yoki qidiruv so'rovini o'zgartiring"
+    },
+    "actions": {
+      "view": "Ko'rish",
+      "edit": "Tahrirlash",
+      "delete": "O'chirish",
+      "activate": "Faollashtirish",
+      "deactivate": "Faolsizlantirish",
+      "confirmDelete": "Bu foydalanuvchini o'chirishni xohlaysizmi?"
+    },
+    "view": {
+      "title": "Foydalanuvchi ma'lumotlari",
+      "description": "Foydalanuvchi haqida batafsil ma'lumot",
+      "back": "Orqaga",
+      "basicInfo": "Asosiy ma'lumotlar",
+      "contactInfo": "Aloqa ma'lumotlari",
+      "accountInfo": "Hisob ma'lumotlari",
+      "profilePhoto": "Profil rasmi",
+      "statistics": "Statistika",
+      "fields": {
+        "name": "Ism",
+        "phone": "Telefon",
+        "role": "Roli",
+        "status": "Holati",
+        "language": "Tili",
+        "balance": "Balans",
+        "bio": "Biografiya",
+        "contactPhone": "Aloqa telefoni",
+        "telegram": "Telegram",
+        "whatsapp": "WhatsApp",
+        "createdAt": "Yaratilgan",
+        "lastUpdated": "Oxirgi yangilangan",
+        "accountAge": "Hisob yoshi",
+        "notSpecified": "Ko'rsatilmagan"
+      },
+      "statuses": {
+        "active": "Faol",
+        "banned": "Bloklangan"
+      },
+      "roles": {
+        "owner": "Egasi",
+        "admin": "Administrator",
+        "user": "Foydalanuvchi"
+      },
+      "languages": {
+        "ru": "Rus tili",
+        "en": "Ingliz tili",
+        "uz": "O'zbek tili"
+      },
+      "confirmDelete": "Bu foydalanuvchini o'chirishni xohlaysizmi?",
+      "deleteSuccess": "Foydalanuvchi muvaffaqiyatli o'chirildi",
+      "deleteError": "Foydalanuvchini o'chirishda xatolik yuz berdi"
+    }
+  },
+  "categories": {
+    "title": "Kategoriyalar",
+    "description": "Ko'chmas mulk kategoriyalarini va ularning sozlamalarini boshqarish",
+    "paid": "Pulli",
+    "free": "Bepul",
+    "stats": {
+      "total": "Jami kategoriyalar",
+      "paid": "Pulli kategoriyalar",
+      "free": "Bepul kategoriyalar"
+    },
+    "filters": {
+      "title": "Filtrlash",
+      "all": "Hammasi",
+      "paid": "Pulli",
+      "free": "Bepul",
+      "clear": "Filtrlarni tozalash",
+      "active": "Faol filtrlash",
+      "search": "Qidirish",
+      "status": "Holat",
+      "exactPrice": "Aniq narx",
+      "minPrice": "Minimal narx",
+      "maxPrice": "Maksimal narx",
+      "priceRange": "Narx oralig'i",
+      "priceFilters": "Narx filtrlari"
+    },
+    "search": {
+      "placeholder": "Kategoriya nomi bo'yicha qidirish..."
+    },
+    "fields": {
+      "name": "Nomi",
+      "price": "Narxi",
+      "adPrice": "Reklama narxi",
+      "status": "Holat"
+    },
+    "status": {
+      "paid": "Pulli ko'rish",
+      "free": "Bepul ko'rish"
+    },
+    "create": {
+      "title": "Kategoriya yaratish",
+      "isPaid": "Pulli kategoriya",
+      "isPaidDescription": "Pulli kategoriyalar e'lonlarni ko'rish uchun obuna talab qiladi",
+      "nameNote": "Eslatma: Kategoriya nomlari tizim tomonidan boshqariladi va bu yerda o'zgartirilmaydi.",
+      "namePlaceholder": "Kategoriya nomini kiriting"
+    },
+    "edit": {
+      "title": "Kategoriyani tahrirlash",
+      "isPaid": "Pulli kategoriya",
+      "isPaidDescription": "Pulli kategoriyalar e'lonlarni ko'rish uchun obuna talab qiladi",
+      "categoryInfo": "Kategoriya ma'lumotlari",
+      "note": "Eslatma: Faqat pulli/bepul holatini o'zgartirish mumkin. Nomi va narxi tizim tomonidan boshqariladi.",
+      "categoryNames": "Kategoriya nomlari",
+      "currentValues": "Joriy qiymatlar"
+    },
+    "delete": {
+      "title": "Kategoriyani o'chirish",
+      "description": "Ushbu kategoriyani o'chirishni xohlaysizmi? Bu amalni qaytarib bo'lmaydi.",
+      "warning": "Ogohlantirish",
+      "warningText": "Ushbu kategoriyani o'chirish mavjud e'lonlar va foydalanuvchi kirishiga ta'sir qilishi mumkin."
+    },
+    "empty": {
+      "title": "Kategoriyalar topilmadi",
+      "description": "Birinchi kategoriyani yaratish orqali boshlang"
+    },
+    "actions": {
+      "create": "Kategoriya yaratish"
+    }
+  },
+  "settings": {
+    "page": {
+      "title": "Sozlamalar",
+      "description": "Profil va tizim sozlamalarini boshqarish"
+    },
+    "general": {
+      "title": "Umumiy sozlamalar",
+      "description": "Tizim sozlamalari"
+    },
+    "profile": {
+      "title": "Profil sozlamalari",
+      "description": "Shaxsiy ma'lumotlaringizni yangilang",
+      "name": "Ism",
+      "namePlaceholder": "Ismingizni kiriting",
+      "bio": "Biografiya",
+      "bioPlaceholder": "O'zingiz haqida qisqacha ma'lumot",
+      "language": "Til",
+      "languages": {
+        "uzbek": "O'zbekcha",
+        "russian": "Ruscha",
+        "english": "Inglizcha"
+      },
+      "contactPhone": "Telefon raqam",
+      "telegram": "Telegram",
+      "whatsapp": "WhatsApp",
+      "update": "Yangilash",
+      "updating": "Yangilanmoqda...",
+      "success": "Profil muvaffaqiyatli yangilandi",
+      "error": "Profilni yangilashda xatolik yuz berdi"
+    },
+    "password": {
+      "title": "Parolni o'zgartirish",
+      "description": "Xavfsizlik uchun parolingizni muntazam yangilang",
+      "oldPassword": "Joriy parol",
+      "oldPasswordPlaceholder": "Joriy parolingizni kiriting",
+      "newPassword": "Yangi parol",
+      "newPasswordPlaceholder": "Yangi parolni kiriting",
+      "confirmPassword": "Parolni tasdiqlang",
+      "confirmPasswordPlaceholder": "Yangi parolni qayta kiriting",
+      "change": "Parolni o'zgartirish",
+      "changing": "O'zgartirilmoqda...",
+      "success": "Parol muvaffaqiyatli o'zgartirildi",
+      "error": "Parolni o'zgartirishda xatolik yuz berdi",
+      "mismatch": "Yangi parollar mos kelmaydi",
+      "tooShort": "Parol kamida 8 ta belgidan iborat bo'lishi kerak"
+    }
+  },
+  "payments": {
+    "title": "To'lovlar",
+    "description": "To'lov statistikasi va tahlili",
+    "stats": {
+      "totalUsersPaid": "Jami to'lov qilgan foydalanuvchilar",
+      "totalPayments": "Jami to'lovlar",
+      "totalAmount": "Jami summa",
+      "categoriesAmount": "Kategoriyalar summası",
+      "activeUsers": "Faol foydalanuvchilar",
+      "transactions": "Tranzaksiyalar",
+      "revenue": "Daromad",
+      "categoryRevenue": "Kategoriya daromadi"
+    },
+    "filters": {
+      "title": "Filtrlash",
+      "dateFrom": "Sana dan",
+      "dateTo": "Sana gacha",
+      "minAmount": "Minimal summa",
+      "clear": "Tozalash",
+      "apply": "Qo'llash"
+    },
+    "charts": {
+      "topCategories": "Top kategoriyalar",
+      "description": "Kategoriyalar bo'yicha to'lovlar",
+      "noData": "Ma'lumot yo'q",
+      "noCategories": "Kategoriyalar bo'yicha ma'lumot topilmadi",
+      "ofTotal": "jami",
+      "totalRevenue": "Jami daromad"
+    },
+    "tables": {
+      "topUsers": "Top foydalanuvchilar",
+      "description": "Eng ko'p to'lov qilgan foydalanuvchilar",
+      "noData": "Ma'lumot yo'q",
+      "noUsers": "Foydalanuvchilar bo'yicha ma'lumot topilmadi",
+      "anonymous": "Anonim",
+      "totalUsers": "Jami foydalanuvchilar",
+      "totalAmount": "Jami summa"
+    },
+    "empty": {
+      "title": "To'lov ma'lumotlari mavjud emas",
+      "description": "To'lov statistikasi bu yerda ko'rinadi"
+    },
+    "errors": {
+      "loadingError": "To'lov ma'lumotlarini yuklashda xatolik"
+    }
+  },
+  "tariffs": {
+    "title": "Tariflar",
+    "description": "Tariflar va obunalarni boshqarish",
+    "stats": {
+      "total": "Jami tariflar",
+      "totalUsers": "Jami foydalanuvchilar",
+      "totalRevenue": "Jami daromad",
+      "activeTariffs": "Faol tariflar",
+      "subscribedUsers": "Obuna foydalanuvchilar",
+      "monthlyRevenue": "Oylik daromad"
+    },
+    "filters": {
+      "title": "Filtrlash",
+      "search": "Qidirish",
+      "searchPlaceholder": "Tarif nomi...",
+      "minPrice": "Minimal narx",
+      "maxPrice": "Maksimal narx",
+      "duration": "Davomiyligi (kun)",
+      "clear": "Tozalash",
+      "apply": "Qo'llash"
+    },
+    "list": {
+      "title": "Tariflar ro'yxati"
+    },
+    "fields": {
+      "name": "Nomi",
+      "price": "Narxi",
+      "duration": "Davomiyligi",
+      "categories": "Kategoriyalar",
+      "actions": "Amallar",
+      "days": "kun",
+      "noCategories": "Kategoriya yo'q"
+    },
+    "placeholders": {
+      "name": "Masalan: Premium",
+      "description": "Tarif haqida batafsil ma'lumot...",
+      "categories": "Kategoriya ID larini vergul bilan ajrating",
+      "categoriesSelect": "Kategoriyalarni tanlang",
+      "noCategories": "Kategoriyalar topilmadi",
+      "priceNote": "Narx UZS da ko'rsatiladi"
+    },
+    "create": {
+      "title": "Yangi tarif yaratish"
+    },
+    "edit": {
+      "title": "Tarifni tahrirlash"
+    },
+    "delete": {
+      "title": "Tarifni o'chirish",
+      "confirmation": "tarifini o'chirishni xohlaysizmi?",
+      "warning": "Bu amalni qaytarib bo'lmaydi. Tarif abadiy o'chiriladi."
+    },
+    "empty": {
+      "title": "Tariflar topilmadi",
+      "description": "Birinchi tarifni yaratish orqali boshlang"
+    },
+    "actions": {
+      "create": "Tarif yaratish"
+    },
+    "errors": {
+      "loadingError": "Tarif ma'lumotlarini yuklashda xatolik"
+    }
+  },
+  "banners": {
+    "title": "Bannerlar",
+    "description": "Bannerlar va reklama materiallarini boshqarish",
+    "createBanner": "Banner yaratish",
+    "editBanner": "Bannerni tahrirlash",
+    "deleteBanner": "Bannerni o'chirish",
+    "searchPlaceholder": "Bannerlarni qidirish...",
+    "titlePlaceholder": "Banner nomi",
+    "image": "Rasm",
+    "link": "Havola",
+    "linkPlaceholder": "https://example.com",
+    "endDate": "Tugash sanasi",
+    "uploadImage": "Rasm yuklash",
+    "noImageSelected": "Rasm tanlanmagan",
+    "expired": "Muddati tugagan",
+    "expiringSoon": "Tez orada tugaydi",
+    "expiresOn": "Tugaydi",
+    "noBanners": "Bannerlar yo'q",
+    "noBannersDescription": "Saytda ko'rsatish uchun birinchi bannerni yarating",
+    "deleteConfirmation": "Bu bannerni o'chirishni xohlaysizmi?",
+    "deleteWarning": "Bu amalni bekor qilib bo'lmaydi",
+    "createError": "Banner yaratishda xatolik",
+    "updateError": "Bannerni yangilashda xatolik",
+    "deleteError": "Bannerni o'chirishda xatolik"
+  },
+  "pages": {
+    "title": "Sahifalar",
+    "description": "Veb-sayt sahifalarini boshqarish",
+    "createNew": "Yangi sahifa yaratish",
+    "editPage": "Sahifani tahrirlash",
+    "deletePage": "Sahifani o'chirish",
+    "slug": "Slug",
+    "pageTitle": "Sarlavha",
+    "content": "Mazmun",
+    "created": "Yaratilgan",
+    "updated": "Yangilangan",
+    "language": "Til",
+    "current": "Joriy",
+    "allLanguages": "Barcha tillar",
+    "pageDetails": "Sahifa tafsilotlari",
+    "deleteWarning": "Bu sahifani o'chirishni xohlaysizmi? Bu amalni bekor qilib bo'lmaydi.",
+    "deleteConfirmation": "Slug '{slug}' bo'lgan sahifa butunlay o'chiriladi.",
+    "titlePlaceholder": {
+      "ru": "Rus tilida sahifa sarlavhasi",
+      "uz": "O'zbek tilida sahifa sarlavhasi",
+      "en": "Ingliz tilida sahifa sarlavhasi"
+    },
+    "errors": {
+      "slugRequired": "Slug talab qilinadi",
+      "titleRequired": "Sarlavha talab qilinadi",
+      "contentRequired": "Mazmun talab qilinadi"
+    },
+    "pageDetails": "Sahifa tafsilotlari",
+    "createNew": "Yangi sahifa yaratish",
+    "editPage": "Sahifani tahrirlash",
+    "deletePage": "Sahifani o'chirish",
+    "searchPlaceholder": "Sahifalarni qidirish...",
+    "noPages": "Sahifalar yo'q",
+    "noPagesDescription": "Saytda ko'rsatish uchun birinchi sahifani yarating",
+    "noResults": "Natijalar topilmadi",
+    "noResultsDescription": "Qidiruv so'rovingizga mos sahifalar topilmadi",
+    "createFirst": "Birinchi sahifani yaratish",
+    "deleteWarning": "Bu sahifani o'chirishni xohlaysizmi?",
+    "deleteConfirmation": "Sahifa '{slug}' o'chiriladi",
+    "viewFullPage": "To'liq sahifani ko'rish",
+    "backToPages": "Sahifalarga qaytish",
+    "notFound": "Sahifa topilmadi",
+    "pageNotFound": "Slug '{slug}' bo'lgan sahifa topilmadi",
+    "error": "Xatolik yuz berdi",
+    "titlePlaceholder": {
+      "uz": "Sahifa sarlavhasi (o'zbekcha)",
+      "ru": "Sahifa sarlavhasi (ruscha)",
+      "en": "Sahifa sarlavhasi (inglizcha)"
+    },
+    "contentPlaceholder": {
+      "uz": "Sahifa mazmuni (o'zbekcha)",
+      "ru": "Sahifa mazmuni (ruscha)",
+      "en": "Sahifa mazmuni (inglizcha)"
+    },
+    "errors": {
+      "slugRequired": "Slug kiritilishi shart",
+      "titleRequired": "Sarlavha kiritilishi shart",
+      "contentRequired": "Mazmun kiritilishi shart"
+    },
+    "markdown": {
+      "supported": "Markdown qo'llab-quvvatlanadi",
+      "examples": {
+        "heading": "# Sarlavha",
+        "bold": "**qalin**",
+        "italic": "*qiya*",
+        "link": "[havola](url)",
+        "code": "`kod`",
+        "list": "- ro'yxat"
+      }
+    },
+    "languages": {
+      "uz": "O'zbek",
+      "ru": "Rus",
+      "en": "Ingliz"
+    }
+  },
+  "districts": {
+    "title": "Tumanlar",
+    "description": "Tumanlar va geografik ma'lumotlarni boshqarish",
+    "createDistrict": "Tuman yaratish",
+    "editDistrict": "Tumanni tahrirlash",
+    "deleteDistrict": "Tumanni o'chirish",
+    "searchPlaceholder": "Tumanlarni qidirish...",
+    "name": "Nomi",
+    "namePlaceholder": "Tuman nomi",
+    "noDistricts": "Tumanlar yo'q",
+    "noDistrictsDescription": "Geografik ma'lumotlarni boshqarish uchun birinchi tumani yarating",
+    "deleteConfirmation": "Bu tumani o'chirishni xohlaysizmi?",
+    "deleteWarning": "Bu amalni bekor qilib bo'lmaydi",
+    "createError": "Tuman yaratishda xatolik",
+    "updateError": "Tumanni yangilashda xatolik",
+    "deleteError": "Tumanni o'chirishda xatolik",
+    "page": {
+      "title": "Tumanlar",
+      "description": "Tumanlar va geografik ma'lumotlarni boshqarish"
+    },
+    "actions": {
+      "addDistrict": "Tuman qo'shish"
+    },
+    "table": {
+      "title": "Tumanlar ro'yxati",
+      "id": "ID",
+      "name": "Nomi",
+      "actions": "Amallar",
+      "noDistricts": "Tumanlar yo'q",
+      "noDistrictsDescription": "Geografik ma'lumotlarni boshqarish uchun birinchi tumani yarating"
+    }
+  },
+  "features": {
+    "title": "Xususiyatlar",
+    "description": "Ko'chmas mulk xususiyatlarini boshqarish",
+    "createFeature": "Xususiyat yaratish",
+    "editFeature": "Xususiyatni tahrirlash",
+    "deleteFeature": "Xususiyatni o'chirish",
+    "searchPlaceholder": "Xususiyatlarni qidirish...",
+    "name": "Nomi",
+    "namePlaceholder": "Xususiyat nomi",
+    "noFeatures": "Xususiyatlar yo'q",
+    "noFeaturesDescription": "Ko'chmas mulk xususiyatlari bu yerda ko'rsatiladi",
+    "deleteConfirmation": "Bu xususiyatni o'chirishni xohlaysizmi?",
+    "deleteWarning": "Bu amalni bekor qilib bo'lmaydi",
+    "createError": "Xususiyat yaratishda xatolik",
+    "updateError": "Xususiyatni yangilashda xatolik",
+    "deleteError": "Xususiyatni o'chirishda xatolik",
+    "duplicateError": "Bunday nomli xususiyat allaqachon mavjud",
+    "page": {
+      "title": "Xususiyatlar",
+      "description": "Ko'chmas mulk xususiyatlarini boshqarish"
+    },
+    "actions": {
+      "addFeature": "Xususiyat qo'shish"
+    },
+    "table": {
+      "title": "Xususiyatlar ro'yxati",
+      "id": "ID",
+      "name": "Nomi",
+      "actions": "Amallar",
+      "noFeatures": "Xususiyatlar yo'q",
+      "noFeaturesDescription": "Ko'chmas mulk xususiyatlari bu yerda ko'rsatiladi"
+    }
+  },
+  "statistics": {
+    "title": "Statistika",
+    "subtitle": "Platformaning batafsil tahlili",
+    "actions": {
+      "refresh": "Yangilash",
+      "export": "Eksport",
+      "retry": "Qayta urinish",
+      "testApi": "API ni sinash"
+    },
+    "errors": {
+      "loadingError": "Yuklash xatoligi",
+      "failedToLoad": "Statistikani yuklab bo'lmadi"
+    },
+    "filters": {
+      "title": "Filtrlar",
+      "period": "Davr",
+      "dateFrom": "Dan",
+      "dateTo": "Gacha",
+      "apply": "Qo'llash",
+      "reset": "Qayta o'rnatish",
+      "periods": {
+        "day": "Kun",
+        "week": "Hafta",
+        "month": "Oy",
+        "year": "Yil"
+      }
+    },
+    "general": {
+      "title": "Umumiy statistika",
+      "noData": "Ma'lumot yo'q",
+      "totalUsers": "Jami foydalanuvchilar",
+      "totalListings": "Jami e'lonlar",
+      "totalViews": "Jami ko'rishlar",
+      "totalFavorites": "Jami sevimlilar",
+      "totalChats": "Jami suhbatlar",
+      "activeListings": "Faol e'lonlar"
+    },
+    "payments": {
+      "title": "To'lovlar statistikasi",
+      "noData": "Ma'lumot yo'q",
+      "totalUsersPaid": "To'lagan foydalanuvchilar",
+      "totalPayments": "Jami to'lovlar",
+      "totalAmount": "Jami summa",
+      "topCategoriesByPayments": "To'lovlar bo'yicha top kategoriyalar",
+      "topUsersByPayments": "To'lovlar bo'yicha top foydalanuvchilar",
+      "paymentDetails": {
+        "title": "To'lov tafsilotlari",
+        "totalUsers": "To'lagan foydalanuvchilar",
+        "totalPayments": "Jami to'lovlar"
+      }
+    },
+    "tariffs": {
+      "title": "Tariflar statistikasi",
+      "noData": "Ma'lumot yo'q",
+      "totalSubscriptions": "Jami obunalar",
+      "activeSubscriptions": "Faol obunalar",
+      "expiringSubscriptions": "Muddati tugayotgan obunalar",
+      "tariffDistribution": {
+        "title": "Tariflar taqsimoti"
+      }
+    }
+  },
+  "eskiz": {
+    "title": "Eskiz balansi",
+    "description": "Eskiz SMS xizmati balansi haqida ma'lumot",
+    "balance": "Balans",
+    "accountInfo": "Hisob ma'lumotlari",
+    "companyName": "Kompaniya nomi",
+    "email": "Email",
+    "status": "Holati",
+    "isVip": "VIP holati",
+    "createdAt": "Yaratilgan",
+    "updatedAt": "Yangilangan",
+    "refresh": "Balansni yangilash",
+    "refreshing": "Yangilanmoqda...",
+    "noData": "Ma'lumotlar mavjud emas",
+    "loading": "Yuklanmoqda...",
+    "error": "Ma'lumotlarni yuklashda xatolik",
+    "retry": "Qayta urinish",
+    "statuses": {
+      "active": "Faol"
+    },
+    "roles": {
+      "user": "Foydalanuvchi"
+    },
+    "vipStatus": {
+      "true": "VIP",
+      "false": "Oddiy"
+    }
+  }
+}

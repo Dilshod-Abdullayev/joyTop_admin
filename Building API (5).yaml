@@ -1,0 +1,6706 @@
+openapi: 3.0.3
+info:
+  title: Building API
+  version: 1.0.0
+  description: Real Estate API Documentation
+  contact:
+    email: support@example.com
+  license:
+    name: BSD License
+paths:
+  /api/mobile/v2/listing-mob/:
+    get:
+      operationId: mobile_v2_listing_mob_list
+      description: Возвращает список всех объявлений
+      summary: Список объявлений
+      parameters:
+      - in: query
+        name: category
+        schema:
+          type: integer
+      - in: query
+        name: city
+        schema:
+          type: integer
+      - in: query
+        name: currency
+        schema:
+          type: string
+      - in: query
+        name: mortgage_available
+        schema:
+          type: boolean
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: price_max
+        schema:
+          type: number
+      - in: query
+        name: price_min
+        schema:
+          type: number
+      - in: query
+        name: rooms
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      - in: query
+        name: transaction_type
+        schema:
+          type: string
+      - in: query
+        name: types
+        schema:
+          type: integer
+      tags:
+      - Mobile
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedListingMobList'
+              examples:
+                ПримерУспешногоОтвета:
+                  value:
+                    count: 123
+                    next: http://api.example.org/accounts/?page=4
+                    previous: http://api.example.org/accounts/?page=2
+                    results:
+                    - - id: 16
+                        user: 14
+                        user_name: Ali Vali
+                        title: Объявление №15
+                        description: Подробное описание недвижимости номер 15
+                        category:
+                          id: 8
+                          name: Uylar
+                        price:
+                          currency: UZS
+                          amount: 6.34
+                        transaction_type: sale
+                        specs:
+                          area: 89.85
+                          age: 4
+                          rooms: 3
+                          floor: 8
+                          bathrooms: 1
+                          toilets: 2
+                          furnished: false
+                          parking: false
+                        features:
+                        - id: 1
+                          name: Oshxona
+                        mortgage_available: true
+                        nearby_list:
+                        - school
+                        coordinates:
+                          lat: 41.311081
+                          lng: 69.240562
+                        status: true
+                        photos:
+                        - https://building.ardentsoft.uz/media/listing_photos/wallhaven-2yr6mm.jpg
+                        location:
+                          city_id: 15
+                          city_name: Tashkent
+                          district_id: 23
+                          district: Chilanzar
+                        video: https://building.ardentsoft.uz/media/listing_videos/Azerbaijani_Song.mp4
+                        city: 15
+                        city_name: Tashkent
+                        types: 15
+                        types_name: Villa
+                        like_count: 0
+                        view_count: 0
+                        share_count: 0
+                        favorite_count: 0
+                        created_at: '2025-07-19T22:48:46.733476Z'
+                  summary: Пример успешного ответа
+          description: Успешный ответ
+  /api/mobile/v2/listing-mob/{id}/:
+    get:
+      operationId: mobile_v2_listing_mob_retrieve
+      description: Возвращает одно объявление по ID
+      summary: Детали объявления
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Объявление.
+        required: true
+      tags:
+      - Mobile
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListingMob'
+              examples:
+                ПримерУспешногоОтвета(детали):
+                  value:
+                    id: 16
+                    user: 14
+                    user_name: Ali Vali
+                    title: Объявление №15
+                    description: Подробное описание недвижимости номер 15
+                    category:
+                      id: 8
+                      name: Uylar
+                    price:
+                      currency: UZS
+                      amount: 6.34
+                    transaction_type: sale
+                    specs:
+                      area: 89.85
+                      age: 4
+                      rooms: 3
+                      floor: 8
+                      bathrooms: 1
+                      toilets: 2
+                      furnished: false
+                      parking: false
+                    features:
+                    - id: 1
+                      name: Oshxona
+                    mortgage_available: true
+                    nearby_list:
+                    - school
+                    coordinates:
+                      lat: 41.311081
+                      lng: 69.240562
+                    status: true
+                    photos:
+                    - https://building.ardentsoft.uz/media/listing_photos/wallhaven-2yr6mm.jpg
+                    location:
+                      city_id: 15
+                      city_name: Tashkent
+                      district_id: 23
+                      district: Chilanzar
+                    video: https://building.ardentsoft.uz/media/listing_videos/Azerbaijani_Song.mp4
+                    city: 15
+                    city_name: Tashkent
+                    types: 15
+                    types_name: Villa
+                    like_count: 0
+                    view_count: 0
+                    share_count: 0
+                    favorite_count: 0
+                    created_at: '2025-07-19T22:48:46.733476Z'
+                  summary: Пример успешного ответа (детали)
+          description: Успешный ответ (одно объявление)
+  /api/schema/mobile/:
+    get:
+      operationId: schema_mobile_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - ckb
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - ug
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - schema
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/schema/v1/:
+    get:
+      operationId: schema_v1_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - ckb
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - ug
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - schema
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/schema/website/:
+    get:
+      operationId: schema_website_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - ckb
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - ug
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - schema
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/token/refresh/:
+    post:
+      operationId: token_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      tags:
+      - token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefreshRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRefreshRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenRefreshRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+          description: ''
+  /api/token/verify/:
+    post:
+      operationId: token_verify_create
+      description: |-
+        Takes a token and indicates if it is valid.  This view provides no
+        information about a token's fitness for a particular use.
+      tags:
+      - token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenVerifyRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenVerifyRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenVerifyRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/website/payments/generate-sign/:
+    post:
+      operationId: website_payments_generate_sign_create
+      description: Тестовый эндпоинт для генерации подписи Click
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/website/v1/auth/login/:
+    post:
+      operationId: website_v1_auth_login_create
+      description: "\n            ### \U0001F4CC Поля запроса:\n            | Поле\
+        \     | Тип     | Обязательное | Описание                  |\n           \
+        \ |----------|---------|--------------|---------------------------|\n    \
+        \        | phone    | string  | ✅           | Телефон в формате 998... |\n\
+        \            | password | string  | ✅           | Пароль                 \
+        \  |\n\n            ---\n            ✅ Для входа через **мобильный клиент**,\
+        \ добавьте `?mobile=1` в URL.\n        "
+      summary: Вход в систему (Website / Mobile)
+      parameters:
+      - in: query
+        name: mobile
+        schema:
+          type: integer
+        description: Указать `1`, если вход через мобильный клиент
+      tags:
+      - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерВхода:
+                value:
+                  phone: '998901234567'
+                  password: password123
+                summary: Пример входа
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерВхода:
+                value:
+                  phone: '998901234567'
+                  password: password123
+                summary: Пример входа
+          multipart/form-data:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерВхода:
+                value:
+                  phone: '998901234567'
+                  password: password123
+                summary: Пример входа
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                ОтветДляMobile:
+                  value:
+                    message: Успешный вход
+                    access: eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+                    refresh: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+                    data:
+                      user:
+                        id: 3
+                        name: John Doe
+                        phone: '998901234567'
+                        role: user
+                        status: active
+                        language: ru
+                        contacts:
+                          contact_phone: null
+                          telegram: null
+                          whatsapp: null
+                  summary: Ответ для Mobile
+          description: Успешный вход
+  /api/website/v1/auth/logout/:
+    post:
+      operationId: website_v1_auth_logout_create
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+          description: ''
+  /api/website/v1/auth/register/:
+    post:
+      operationId: website_v1_auth_register_create
+      description: "\n            ## \U0001F4DD Описание запроса\n\n            Создаёт\
+        \ нового пользователя.\n\n            ### \U0001F4CC Поля запроса:\n     \
+        \       | Поле     | Тип     | Обязательное | Описание                   \
+        \ |\n            |----------|---------|--------------|-----------------------------|\n\
+        \            | name     | string  | ✅           | Имя                    \
+        \     |\n            | phone    | string  | ✅           | Телефон (998...)\
+        \           |\n            | password | string  | ✅           | Пароль (мин.\
+        \ 8 символов)   |\n            | language | string  | ✅           | uz / ru\
+        \ / en               |\n\n            ---\n            ✅ Для регистрации через\
+        \ **мобильный клиент**, добавьте `?mobile=1` в URL.\n        "
+      summary: Регистрация нового пользователя (Website / Mobile)
+      parameters:
+      - in: query
+        name: mobile
+        schema:
+          type: integer
+        description: Указать `1`, если регистрация с мобильного клиента
+      tags:
+      - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              Регистрация:
+                value:
+                  name: John
+                  phone: '998901234567'
+                  password: password123
+                  language: uz
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              Регистрация:
+                value:
+                  name: John
+                  phone: '998901234567'
+                  password: password123
+                  language: uz
+          multipart/form-data:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              Регистрация:
+                value:
+                  name: John
+                  phone: '998901234567'
+                  password: password123
+                  language: uz
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                ОтветДляMobile:
+                  value:
+                    message: Пользователь успешно зарегистрирован
+                    access: eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+                    refresh: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+                    data:
+                      user:
+                        id: 7
+                        name: John
+                        phone: '998901234567'
+                        role: user
+                        status: active
+                        language: uz
+                        contacts:
+                          contact_phone: null
+                          telegram: null
+                          whatsapp: null
+                  summary: Ответ для Mobile
+          description: Успешная регистрация
+  /api/website/v1/banners/:
+    get:
+      operationId: website_v1_banners_list
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Banner'
+          description: ''
+    post:
+      operationId: website_v1_banners_create
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BannerRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BannerRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BannerRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Banner'
+          description: ''
+  /api/website/v1/banners/{id}/:
+    get:
+      operationId: website_v1_banners_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Баннер.
+        required: true
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Banner'
+          description: ''
+    put:
+      operationId: website_v1_banners_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Баннер.
+        required: true
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BannerRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BannerRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BannerRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Banner'
+          description: ''
+    patch:
+      operationId: website_v1_banners_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Баннер.
+        required: true
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBannerRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBannerRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBannerRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Banner'
+          description: ''
+    delete:
+      operationId: website_v1_banners_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Баннер.
+        required: true
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/category/:
+    get:
+      operationId: website_v1_category_list
+      description: Returns all categories.
+      summary: Categories list
+      parameters:
+      - in: query
+        name: ad_price_max
+        schema:
+          type: number
+      - in: query
+        name: ad_price_min
+        schema:
+          type: number
+      - in: query
+        name: is_paid
+        schema:
+          type: boolean
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - categories
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+          description: ''
+    post:
+      operationId: website_v1_category_create
+      summary: Add a category
+      tags:
+      - categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+  /api/website/v1/category/{id}/:
+    get:
+      operationId: website_v1_category_retrieve
+      summary: Retrieve category by ID
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Категория.
+        required: true
+      tags:
+      - categories
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+    put:
+      operationId: website_v1_category_update
+      summary: Update a category
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Категория.
+        required: true
+      tags:
+      - categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CategoryRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+    patch:
+      operationId: website_v1_category_partial_update
+      summary: Update a category
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Категория.
+        required: true
+      tags:
+      - categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCategoryRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCategoryRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCategoryRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+    delete:
+      operationId: website_v1_category_destroy
+      summary: Delete a category
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Категория.
+        required: true
+      tags:
+      - categories
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/category/with-count/:
+    get:
+      operationId: website_v1_category_with_count_retrieve
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryAdmin'
+          description: ''
+  /api/website/v1/chats/:
+    get:
+      operationId: website_v1_chats_list
+      description: Возвращает список всех чатов, в которых участвует текущий пользователь.
+      summary: Список чатов пользователя
+      tags:
+      - Chat
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ChatList'
+          description: ''
+  /api/website/v1/chats/{id}/messages/:
+    get:
+      operationId: website_v1_chats_messages_list
+      description: Возвращает все сообщения в чате по ID.
+      summary: Список сообщений в чате
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: id
+        schema:
+          type: integer
+        description: ID чата
+        required: true
+      tags:
+      - Chat
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Message'
+          description: ''
+  /api/website/v1/chats/create_chat/:
+    post:
+      operationId: website_v1_chats_create_chat_create
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/website/v1/chats/send_message/:
+    post:
+      operationId: website_v1_chats_send_message_create
+      description: Создаёт новое сообщение с текстом и/или изображениями. Поддерживает
+        множественные изображения.
+      summary: Отправить сообщение
+      tags:
+      - Chat
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                receiver_id:
+                  type: integer
+                  example: 5
+                text:
+                  type: string
+                  example: Привет, интересует квартира.
+                images:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+              required:
+              - receiver_id
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: Пользователь не найден
+          description: ''
+  /api/website/v1/city/:
+    get:
+      operationId: website_v1_city_list
+      description: Returns all cities.
+      summary: Cities list
+      tags:
+      - cities
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/City'
+          description: ''
+    post:
+      operationId: website_v1_city_create
+      summary: Add a city
+      tags:
+      - cities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CityRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CityRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CityRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+          description: ''
+  /api/website/v1/city/{id}/:
+    get:
+      operationId: website_v1_city_retrieve
+      summary: Retrieve city by ID
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this city.
+        required: true
+      tags:
+      - cities
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+          description: ''
+    put:
+      operationId: website_v1_city_update
+      summary: Update a city
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this city.
+        required: true
+      tags:
+      - cities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CityRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CityRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CityRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+          description: ''
+    patch:
+      operationId: website_v1_city_partial_update
+      summary: Update a city
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this city.
+        required: true
+      tags:
+      - cities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCityRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCityRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCityRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+          description: ''
+    delete:
+      operationId: website_v1_city_destroy
+      summary: Delete a city
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this city.
+        required: true
+      tags:
+      - cities
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/city/location/:
+    get:
+      operationId: website_v1_city_location_retrieve
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+          description: ''
+  /api/website/v1/city/with-count/:
+    get:
+      operationId: website_v1_city_with_count_retrieve
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+          description: ''
+  /api/website/v1/dashboard/:
+    get:
+      operationId: website_v1_dashboard_list
+      summary: 'Дашборд: Статистика пользователей, подписок, объявлений и графики'
+      tags:
+      - Dashboard
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Dashboard'
+          description: ''
+  /api/website/v1/district/:
+    get:
+      operationId: website_v1_district_list
+      description: Returns all districts.
+      summary: Districts list
+      tags:
+      - districts
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/District'
+          description: ''
+    post:
+      operationId: website_v1_district_create
+      summary: Add a district
+      tags:
+      - districts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DistrictRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DistrictRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DistrictRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/District'
+          description: ''
+  /api/website/v1/district/{id}/:
+    get:
+      operationId: website_v1_district_retrieve
+      summary: Retrieve district by ID
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this district.
+        required: true
+      tags:
+      - districts
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/District'
+          description: ''
+    put:
+      operationId: website_v1_district_update
+      summary: Update a district
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this district.
+        required: true
+      tags:
+      - districts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DistrictRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DistrictRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DistrictRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/District'
+          description: ''
+    patch:
+      operationId: website_v1_district_partial_update
+      summary: Update a district
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this district.
+        required: true
+      tags:
+      - districts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDistrictRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDistrictRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDistrictRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/District'
+          description: ''
+    delete:
+      operationId: website_v1_district_destroy
+      summary: Delete a district
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this district.
+        required: true
+      tags:
+      - districts
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/favorites/:
+    get:
+      operationId: website_v1_favorites_list
+      description: Returns all favorite listings.
+      summary: Favorites list
+      tags:
+      - favorites
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Favorites'
+          description: ''
+    post:
+      operationId: website_v1_favorites_create
+      summary: Add listing to favorites
+      tags:
+      - favorites
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FavoritesRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FavoritesRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FavoritesRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Favorites'
+          description: ''
+  /api/website/v1/favorites/{id}/:
+    get:
+      operationId: website_v1_favorites_retrieve
+      summary: Retrieve favorite by ID
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Избранное.
+        required: true
+      tags:
+      - favorites
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Favorites'
+          description: ''
+    put:
+      operationId: website_v1_favorites_update
+      summary: Update favorite
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Избранное.
+        required: true
+      tags:
+      - favorites
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FavoritesRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FavoritesRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FavoritesRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Favorites'
+          description: ''
+    patch:
+      operationId: website_v1_favorites_partial_update
+      summary: Update favorite
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Избранное.
+        required: true
+      tags:
+      - favorites
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFavoritesRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFavoritesRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFavoritesRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Favorites'
+          description: ''
+    delete:
+      operationId: website_v1_favorites_destroy
+      summary: Remove listing from favorites
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Избранное.
+        required: true
+      tags:
+      - favorites
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/favorites/remove/:
+    delete:
+      operationId: website_v1_favorites_remove_destroy
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/features/:
+    get:
+      operationId: website_v1_features_list
+      description: Returns all feature categories.
+      summary: Feature categories list
+      tags:
+      - features
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FeaturesCat'
+          description: ''
+    post:
+      operationId: website_v1_features_create
+      summary: Add a feature category
+      tags:
+      - features
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeaturesCat'
+          description: ''
+  /api/website/v1/features/{id}/:
+    get:
+      operationId: website_v1_features_retrieve
+      summary: Retrieve feature category by ID
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this features cat.
+        required: true
+      tags:
+      - features
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeaturesCat'
+          description: ''
+    put:
+      operationId: website_v1_features_update
+      summary: Update a feature category
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this features cat.
+        required: true
+      tags:
+      - features
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeaturesCat'
+          description: ''
+    patch:
+      operationId: website_v1_features_partial_update
+      summary: Update a feature category
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this features cat.
+        required: true
+      tags:
+      - features
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeaturesCat'
+          description: ''
+    delete:
+      operationId: website_v1_features_destroy
+      summary: Delete a feature category
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this features cat.
+        required: true
+      tags:
+      - features
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/listing/:
+    get:
+      operationId: website_v1_listing_list
+      description: Возвращает список всех объявлений
+      summary: Список объявлений
+      parameters:
+      - in: query
+        name: category
+        schema:
+          type: integer
+      - in: query
+        name: city
+        schema:
+          type: integer
+      - in: query
+        name: currency
+        schema:
+          type: string
+      - in: query
+        name: mortgage_available
+        schema:
+          type: boolean
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - in: query
+        name: price_max
+        schema:
+          type: number
+      - in: query
+        name: price_min
+        schema:
+          type: number
+      - in: query
+        name: rooms
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      - in: query
+        name: transaction_type
+        schema:
+          type: string
+      - in: query
+        name: types
+        schema:
+          type: integer
+      tags:
+      - listings
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedListingList'
+              examples:
+                ПримерУспешногоОтвета:
+                  value:
+                    count: 123
+                    next: http://api.example.org/accounts/?page=4
+                    previous: http://api.example.org/accounts/?page=2
+                    results:
+                    - - id: 16
+                        user: 14
+                        user_name: Ali Vali
+                        title: Объявление №15
+                        description: Подробное описание недвижимости номер 15
+                        category:
+                          id: 8
+                          name: Uylar
+                        price:
+                          currency: UZS
+                          amount: 6.34
+                        transaction_type: sale
+                        specs:
+                          furnished: true
+                          area: 114.4
+                          age: 17
+                          air_conditioning: false
+                          parking: true
+                          built_in_kitchen: false
+                          elevator: false
+                          security: false
+                          living_area: null
+                          lot_area: null
+                          ceiling_height: null
+                          rooms: 2
+                          bedrooms: null
+                          bathrooms: 1
+                          toilets: 2
+                          balconies: null
+                          floor: 7
+                          total_floors: null
+                          renovation: null
+                          heating: null
+                          hot_water: null
+                          energy_efficiency: null
+                          noise_level: null
+                          garage: false
+                          building_number: null
+                        features:
+                        - id: 1
+                          name: Oshxona
+                        mortgage_available: true
+                        nearby_list:
+                        - school
+                        coordinates:
+                          lat: 41.311081
+                          lng: 69.240562
+                        status: true
+                        photos:
+                        - https://building.ardentsoft.uz/media/listing_photos/wallhaven-2yr6mm.jpg
+                        location:
+                          city_id: 15
+                          city_name: Tashkent
+                          district_id: 23
+                          district: Chilanzar
+                          building_number: null
+                        video: https://building.ardentsoft.uz/media/listing_videos/Azerbaijani_Song.mp4
+                        city: 15
+                        city_name: Tashkent
+                        types: 15
+                        types_name: Villa
+                        like_count: 0
+                        view_count: 0
+                        share_count: 0
+                        favorite_count: 0
+                        created_at: '2025-07-19T22:48:46.733476Z'
+                  summary: Пример успешного ответа
+          description: Успешный ответ
+    post:
+      operationId: website_v1_listing_create
+      description: Создает новое объявление на основе вложенных данных (цена, фото,
+        характеристики, локация и т.д.)
+      summary: Добавить новое объявление
+      tags:
+      - listings
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ListingRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ListingRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListingRequest'
+            examples:
+              ПримерТелаЗапроса:
+                value:
+                  specs:
+                    furnished: true
+                    air_conditioning: false
+                    parking: false
+                    built_in_kitchen: false
+                    garage: false
+                    elevator: false
+                    security: false
+                    area: 1000
+                    living_area: 1
+                    lot_area: 1
+                    ceiling_height: 1
+                    age: 1
+                    rooms: 1
+                    bedrooms: 1
+                    bathrooms: 1
+                    toilets: 1
+                    balconies: 1
+                    floor: 1
+                    total_floors: 1
+                    renovation: none
+                    heating: none
+                    hot_water: central
+                    energy_efficiency: A++
+                    noise_level: low
+                    building_number: '123'
+                  features:
+                  - kitchen
+                  - garage
+                  - garden
+                  - pool
+                  - terrace
+                  - security
+                  - elevator
+                  - fireplace
+                  - storage
+                  - laundry
+                  - playground
+                  - internet
+                  - solar_panels
+                  - wheelchair_access
+                  mortgage_available: false
+                  types: 1
+                  title: Title
+                  description: detail
+                  category: 18
+                  transaction_type: sale
+                  nearby_list:
+                  - school
+                  - supermarket
+                  location:
+                    district: Gurlan
+                    city: Xorazm
+                  price:
+                    currency: USD
+                    amount: 100
+                  photos:
+                  - https://via.placeholder.com/150
+                  - https://via.placeholder.com/150
+                  coordinates:
+                    latitude: 41.311081
+                    longitude: 69.240562
+                  video: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+                summary: Пример тела запроса
+        required: true
+      security:
+      - BearerAuth
+      - cookieJWTAuth
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Listing'
+              examples:
+                ПримерУспешногоОтвета:
+                  value:
+                    status: true
+                    message: yaratildi
+                    data:
+                      title: name
+                      description: desc
+                      transaction_type: sale
+                      category: 1
+                      types: 9
+                      specs:
+                        area: 33
+                        living_area: 33
+                        lot_area: 33
+                        ceiling_height: 33
+                        age: 33
+                        renovation: cosmetic
+                        rooms: 33
+                        bedrooms: 3
+                        bathrooms: 3
+                        toilets: 3
+                        balconies: 3
+                        floor: 3
+                        total_floors: 3
+                        furnished: false
+                        built_in_kitchen: true
+                        air_conditioning: false
+                        heating: gas
+                        hot_water: gas
+                        parking: true
+                        garage: false
+                        elevator: true
+                        security: false
+                        energy_efficiency: A++
+                        noise_level: medium
+                      features:
+                      - 7
+                      - 8
+                      - 12
+                      mortgage_available: true
+                      nearby_list:
+                      - 20
+                      - 23
+                      - 22
+                      location:
+                        city_id: 7
+                        district_id: 14
+                        building_number: '33'
+                      coordinates:
+                        lat: 3
+                        lng: 4
+                      price:
+                        currency: USD
+                        amount: 4444
+                      photos:
+                      - file
+                  summary: Пример успешного ответа
+          description: Успешное создание объявления
+  /api/website/v1/listing-features/:
+    get:
+      operationId: website_v1_listing_features_list
+      description: Returns all features.
+      summary: Features list
+      tags:
+      - features
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Features'
+          description: ''
+    post:
+      operationId: website_v1_listing_features_create
+      summary: Add a feature
+      tags:
+      - features
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeaturesRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FeaturesRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FeaturesRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Features'
+          description: ''
+  /api/website/v1/listing-features/{id}/:
+    get:
+      operationId: website_v1_listing_features_retrieve
+      summary: Retrieve feature by ID
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this features mod.
+        required: true
+      tags:
+      - features
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Features'
+          description: ''
+    put:
+      operationId: website_v1_listing_features_update
+      summary: Update a feature
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this features mod.
+        required: true
+      tags:
+      - features
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeaturesRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FeaturesRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FeaturesRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Features'
+          description: ''
+    patch:
+      operationId: website_v1_listing_features_partial_update
+      summary: Update a feature
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this features mod.
+        required: true
+      tags:
+      - features
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFeaturesRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFeaturesRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFeaturesRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Features'
+          description: ''
+    delete:
+      operationId: website_v1_listing_features_destroy
+      summary: Delete a feature
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this features mod.
+        required: true
+      tags:
+      - features
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/listing-nearby/:
+    get:
+      operationId: website_v1_listing_nearby_list
+      description: Returns all nearby.
+      summary: Nearby list
+      tags:
+      - Building-listing
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Nearby'
+          description: ''
+    post:
+      operationId: website_v1_listing_nearby_create
+      summary: Create a new nearby
+      tags:
+      - Building-listing
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Nearby'
+          description: ''
+  /api/website/v1/listing-nearby-list/:
+    get:
+      operationId: website_v1_listing_nearby_list_list
+      description: Returns all nearby.
+      summary: Nearby list
+      tags:
+      - Building-listing
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NearbyList'
+          description: ''
+    post:
+      operationId: website_v1_listing_nearby_list_create
+      summary: Create a new nearby
+      tags:
+      - Building-listing
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NearbyListRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NearbyListRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/NearbyListRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NearbyList'
+          description: ''
+  /api/website/v1/listing-nearby-list/{id}/:
+    get:
+      operationId: website_v1_listing_nearby_list_retrieve
+      summary: Retrieve nearby by ID
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this nearby list mod.
+        required: true
+      tags:
+      - Building-listing
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NearbyList'
+          description: ''
+    put:
+      operationId: website_v1_listing_nearby_list_update
+      summary: Update a nearby
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this nearby list mod.
+        required: true
+      tags:
+      - Building-listing
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NearbyListRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NearbyListRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/NearbyListRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NearbyList'
+          description: ''
+    patch:
+      operationId: website_v1_listing_nearby_list_partial_update
+      summary: Partially update a nearby
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this nearby list mod.
+        required: true
+      tags:
+      - Building-listing
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedNearbyListRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedNearbyListRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedNearbyListRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NearbyList'
+          description: ''
+    delete:
+      operationId: website_v1_listing_nearby_list_destroy
+      summary: Delete a nearby
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this nearby list mod.
+        required: true
+      tags:
+      - Building-listing
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/listing-nearby/{id}/:
+    get:
+      operationId: website_v1_listing_nearby_retrieve
+      summary: Retrieve nearby by ID
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Ближайший объект.
+        required: true
+      tags:
+      - Building-listing
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Nearby'
+          description: ''
+    put:
+      operationId: website_v1_listing_nearby_update
+      summary: Update a nearby
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Ближайший объект.
+        required: true
+      tags:
+      - Building-listing
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Nearby'
+          description: ''
+    patch:
+      operationId: website_v1_listing_nearby_partial_update
+      summary: Partially update a nearby
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Ближайший объект.
+        required: true
+      tags:
+      - Building-listing
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Nearby'
+          description: ''
+    delete:
+      operationId: website_v1_listing_nearby_destroy
+      summary: Delete a nearby
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Ближайший объект.
+        required: true
+      tags:
+      - Building-listing
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/listing/{id}/:
+    get:
+      operationId: website_v1_listing_retrieve
+      description: Возвращает одно объявление по ID
+      summary: Детали объявления
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Объявление.
+        required: true
+      tags:
+      - listings
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Listing'
+              examples:
+                ПримерУспешногоОтвета(детали):
+                  value:
+                    id: 16
+                    user: 14
+                    user_name: Ali Vali
+                    title: Объявление №15
+                    description: Подробное описание недвижимости номер 15
+                    category:
+                      id: 8
+                      name: Uylar
+                    price:
+                      currency: UZS
+                      amount: 6.34
+                    transaction_type: sale
+                    specs:
+                      furnished: true
+                      area: 114.4
+                      age: 17
+                      air_conditioning: false
+                      parking: true
+                      built_in_kitchen: false
+                      elevator: false
+                      security: false
+                      living_area: null
+                      lot_area: null
+                      ceiling_height: null
+                      rooms: 2
+                      bedrooms: null
+                      bathrooms: 1
+                      toilets: 2
+                      balconies: null
+                      floor: 7
+                      total_floors: null
+                      renovation: null
+                      heating: null
+                      hot_water: null
+                      energy_efficiency: null
+                      noise_level: null
+                      garage: false
+                      building_number: null
+                    features:
+                    - id: 1
+                      name: Oshxona
+                    mortgage_available: true
+                    nearby_list:
+                    - school
+                    coordinates:
+                      lat: 41.311081
+                      lng: 69.240562
+                    status: true
+                    photos:
+                    - https://building.ardentsoft.uz/media/listing_photos/wallhaven-2yr6mm.jpg
+                    location:
+                      city_id: 15
+                      city_name: Tashkent
+                      district_id: 23
+                      district: Chilanzar
+                      building_number: null
+                    video: https://building.ardentsoft.uz/media/listing_videos/Azerbaijani_Song.mp4
+                    city: 15
+                    city_name: Tashkent
+                    types: 15
+                    types_name: Villa
+                    like_count: 0
+                    view_count: 0
+                    share_count: 0
+                    favorite_count: 0
+                    created_at: '2025-07-19T22:48:46.733476Z'
+                  summary: Пример успешного ответа (детали)
+          description: Успешный ответ (одно объявление)
+    put:
+      operationId: website_v1_listing_update
+      summary: Update a listing
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Объявление.
+        required: true
+      tags:
+      - listings
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ListingRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ListingRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListingRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Listing'
+          description: ''
+    patch:
+      operationId: website_v1_listing_partial_update
+      summary: Update a listing (partial)
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Объявление.
+        required: true
+      tags:
+      - listings
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedListingRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedListingRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedListingRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Listing'
+          description: ''
+    delete:
+      operationId: website_v1_listing_destroy
+      summary: Delete a listing
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Объявление.
+        required: true
+      tags:
+      - listings
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/listing/mobile/:
+    get:
+      operationId: website_v1_listing_mobile_retrieve
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Listing'
+          description: ''
+  /api/website/v1/listing/similar/:
+    get:
+      operationId: website_v1_listing_similar_retrieve
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Listing'
+          description: ''
+  /api/website/v1/map/:
+    get:
+      operationId: website_v1_map_list
+      parameters:
+      - in: query
+        name: category
+        schema:
+          type: integer
+      - in: query
+        name: city
+        schema:
+          type: integer
+      - in: query
+        name: currency
+        schema:
+          type: string
+      - in: query
+        name: mortgage_available
+        schema:
+          type: boolean
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: price_max
+        schema:
+          type: number
+      - in: query
+        name: price_min
+        schema:
+          type: number
+      - in: query
+        name: rooms
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      - in: query
+        name: transaction_type
+        schema:
+          type: string
+      - in: query
+        name: types
+        schema:
+          type: integer
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Locations'
+          description: ''
+    post:
+      operationId: website_v1_map_create
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationsRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LocationsRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LocationsRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Locations'
+          description: ''
+  /api/website/v1/map/{id}/:
+    get:
+      operationId: website_v1_map_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Объявление.
+        required: true
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MapListing'
+          description: ''
+    put:
+      operationId: website_v1_map_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Объявление.
+        required: true
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocationsRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LocationsRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LocationsRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Locations'
+          description: ''
+    patch:
+      operationId: website_v1_map_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Объявление.
+        required: true
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedLocationsRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedLocationsRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedLocationsRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Locations'
+          description: ''
+    delete:
+      operationId: website_v1_map_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Объявление.
+        required: true
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/payments/:
+    get:
+      operationId: website_v1_payments_list
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Payment'
+          description: ''
+    post:
+      operationId: website_v1_payments_create
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: ''
+  /api/website/v1/payments/{id}/:
+    get:
+      operationId: website_v1_payments_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this payment mod.
+        required: true
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: ''
+    put:
+      operationId: website_v1_payments_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this payment mod.
+        required: true
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: ''
+    patch:
+      operationId: website_v1_payments_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this payment mod.
+        required: true
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPaymentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPaymentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPaymentRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: ''
+    delete:
+      operationId: website_v1_payments_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this payment mod.
+        required: true
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/payments/click-callback/:
+    post:
+      operationId: website_v1_payments_click_callback_create
+      description: |-
+        Обработчик callback от Click (prepare и complete).
+        Проверяет подпись, сумму, merchant_id и service_id.
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: ''
+  /api/website/v1/payments/init-click/:
+    post:
+      operationId: website_v1_payments_init_click_create
+      description: |-
+        Инициирует платёж по:
+          - payment_type = 'topup'    → пополнение кошелька на amount
+          - payment_type = 'subscription' → покупка подписки (фикс. цена)
+          - payment_type = 'ad' → (не используем для кошелька — оплачиваем из кошелька)
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: ''
+  /api/website/v1/payments/init-payme/:
+    post:
+      operationId: website_v1_payments_init_payme_create
+      description: Инициация платежа через Payme (пополнение кошелька).
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: ''
+  /api/website/v1/payments/payme-callback/:
+    post:
+      operationId: website_v1_payments_payme_callback_create
+      description: |-
+        Callback от Payme: CheckTransaction, PerformTransaction, CancelTransaction
+        С проверкой Merchant ID и Secret key (X-Auth).
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: ''
+  /api/website/v1/photo/:
+    get:
+      operationId: website_v1_photo_list
+      description: Returns all photos.
+      summary: Photos list
+      tags:
+      - photos
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Photo'
+          description: ''
+    post:
+      operationId: website_v1_photo_create
+      summary: Add a photo
+      tags:
+      - photos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PhotoRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PhotoRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PhotoRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Photo'
+          description: ''
+  /api/website/v1/photo/{id}/:
+    get:
+      operationId: website_v1_photo_retrieve
+      summary: Retrieve photo by ID
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Фото.
+        required: true
+      tags:
+      - photos
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Photo'
+          description: ''
+    put:
+      operationId: website_v1_photo_update
+      summary: Update a photo
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Фото.
+        required: true
+      tags:
+      - photos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PhotoRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PhotoRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PhotoRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Photo'
+          description: ''
+    patch:
+      operationId: website_v1_photo_partial_update
+      summary: Update a photo
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Фото.
+        required: true
+      tags:
+      - photos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPhotoRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPhotoRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPhotoRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Photo'
+          description: ''
+    delete:
+      operationId: website_v1_photo_destroy
+      summary: Delete a photo
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Фото.
+        required: true
+      tags:
+      - photos
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/send_sms/send-code/:
+    post:
+      operationId: website_v1_send_sms_send_code_create
+      description: 'Отправляет 6-значный код подтверждения на указанный номер телефона.
+        Ограничение: не чаще 1 раза в минуту.'
+      summary: Отправка SMS-кода подтверждения
+      tags:
+      - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерЗапроса:
+                value:
+                  phone: '998901234567'
+                summary: Пример запроса
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерЗапроса:
+                value:
+                  phone: '998901234567'
+                summary: Пример запроса
+          multipart/form-data:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерЗапроса:
+                value:
+                  phone: '998901234567'
+                summary: Пример запроса
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                УспешныйОтвет:
+                  value:
+                    status: true
+                    message: muvaffaqiyatli
+                    data: Код отправлен
+                  summary: Успешный ответ
+          description: Код успешно отправлен
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                НомерНеПередан:
+                  value:
+                    status: false
+                    message: Номер телефона обязателен
+                    data: []
+                  summary: Номер не передан
+          description: Ошибка запроса
+        '429':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                ПовторнаяОтправкаСлишкомРано:
+                  value:
+                    status: false
+                    message: Код уже отправлен. Повторите через 1 минуту.
+                    data: []
+                  summary: Повторная отправка слишком рано
+          description: Слишком частые запросы
+  /api/website/v1/send_sms/verify-code/:
+    post:
+      operationId: website_v1_send_sms_verify_code_create
+      description: Подтверждает код, отправленный на номер телефона
+      summary: Подтверждение номера
+      tags:
+      - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерЗапроса:
+                value:
+                  phone: '998901234567'
+                  code: '123456'
+                summary: Пример запроса
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерЗапроса:
+                value:
+                  phone: '998901234567'
+                  code: '123456'
+                summary: Пример запроса
+          multipart/form-data:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерЗапроса:
+                value:
+                  phone: '998901234567'
+                  code: '123456'
+                summary: Пример запроса
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                УспешныйОтвет:
+                  value:
+                    status: true
+                    message: muvaffaqiyatli
+                    data: Код подтверждён
+                  summary: Успешный ответ
+          description: Успешная регистрация
+        '400':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                НеверныйИлиИстёкшийКод:
+                  value:
+                    status: false
+                    message: Неверный код подтверждения
+                    data: []
+                  summary: Неверный или истёкший код
+                КодИстёк:
+                  value:
+                    status: false
+                    message: Код подтверждения истёк
+                    data: []
+                  summary: Код истёк
+          description: Ошибка подтверждения
+  /api/website/v1/shares/:
+    get:
+      operationId: website_v1_shares_list
+      description: Returns all shares.
+      summary: Shares list
+      tags:
+      - shares
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Shares'
+          description: ''
+    post:
+      operationId: website_v1_shares_create
+      summary: Add a share
+      tags:
+      - shares
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SharesRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SharesRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SharesRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shares'
+          description: ''
+  /api/website/v1/shares/{id}/:
+    get:
+      operationId: website_v1_shares_retrieve
+      summary: Retrieve share by ID
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Поделиться.
+        required: true
+      tags:
+      - shares
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shares'
+          description: ''
+    put:
+      operationId: website_v1_shares_update
+      summary: Update a share
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Поделиться.
+        required: true
+      tags:
+      - shares
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SharesRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SharesRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SharesRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shares'
+          description: ''
+    patch:
+      operationId: website_v1_shares_partial_update
+      summary: Update a share
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Поделиться.
+        required: true
+      tags:
+      - shares
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSharesRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSharesRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSharesRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shares'
+          description: ''
+    delete:
+      operationId: website_v1_shares_destroy
+      summary: Delete a share
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Поделиться.
+        required: true
+      tags:
+      - shares
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/stats/general/:
+    get:
+      operationId: website_v1_stats_general_retrieve
+      description: 📈 Общая статистика
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/website/v1/stats/payments/:
+    get:
+      operationId: website_v1_stats_payments_list
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaymentStats'
+          description: ''
+  /api/website/v1/stats/tariffs/:
+    get:
+      operationId: website_v1_stats_tariffs_retrieve
+      description: 📊 Статистика по тарифам
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/website/v1/tariffs/:
+    get:
+      operationId: website_v1_tariffs_list
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subcription'
+          description: ''
+    post:
+      operationId: website_v1_tariffs_create
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubcriptionCreateRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SubcriptionCreateRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SubcriptionCreateRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubcriptionCreate'
+          description: ''
+  /api/website/v1/tariffs/{id}/:
+    get:
+      operationId: website_v1_tariffs_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Настройки подписки.
+        required: true
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subcription'
+          description: ''
+    put:
+      operationId: website_v1_tariffs_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Настройки подписки.
+        required: true
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubcriptionRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SubcriptionRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SubcriptionRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subcription'
+          description: ''
+    patch:
+      operationId: website_v1_tariffs_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Настройки подписки.
+        required: true
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSubcriptionRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSubcriptionRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSubcriptionRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subcription'
+          description: ''
+    delete:
+      operationId: website_v1_tariffs_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Настройки подписки.
+        required: true
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/typesell/:
+    get:
+      operationId: website_v1_typesell_list
+      description: Returns all types of sale.
+      summary: Sell types list
+      tags:
+      - typesells
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TypeSell'
+          description: ''
+    post:
+      operationId: website_v1_typesell_create
+      summary: Add a sell type
+      tags:
+      - typesells
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeSell'
+          description: ''
+  /api/website/v1/typesell/{id}/:
+    get:
+      operationId: website_v1_typesell_retrieve
+      summary: Retrieve sell type by ID
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Тип объявления.
+        required: true
+      tags:
+      - typesells
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeSell'
+          description: ''
+    put:
+      operationId: website_v1_typesell_update
+      summary: Update a sell type
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Тип объявления.
+        required: true
+      tags:
+      - typesells
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeSell'
+          description: ''
+    patch:
+      operationId: website_v1_typesell_partial_update
+      summary: Update a sell type
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Тип объявления.
+        required: true
+      tags:
+      - typesells
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeSell'
+          description: ''
+    delete:
+      operationId: website_v1_typesell_destroy
+      summary: Delete a sell type
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Тип объявления.
+        required: true
+      tags:
+      - typesells
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/users/:
+    get:
+      operationId: website_v1_users_list
+      description: Returns all users.
+      summary: Users list
+      parameters:
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: page
+        required: false
+        in: query
+        description: A page number within the paginated result set.
+        schema:
+          type: integer
+      - name: page_size
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - users
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedCustomUserList'
+          description: ''
+    post:
+      operationId: website_v1_users_create
+      summary: Add a user
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomUserCreateRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CustomUserCreateRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CustomUserCreateRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUser'
+          description: ''
+  /api/website/v1/users/{id}/:
+    get:
+      operationId: website_v1_users_retrieve
+      summary: Retrieve user by ID
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Пользователь.
+        required: true
+      tags:
+      - users
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUser'
+          description: ''
+    put:
+      operationId: website_v1_users_update
+      summary: Fully update a user
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Пользователь.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomUserCreateRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CustomUserCreateRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CustomUserCreateRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUser'
+          description: ''
+    patch:
+      operationId: website_v1_users_partial_update
+      summary: Partially update a user
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Пользователь.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCustomUserCreateRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCustomUserCreateRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCustomUserCreateRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUser'
+          description: ''
+    delete:
+      operationId: website_v1_users_destroy
+      summary: Delete a user
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Пользователь.
+        required: true
+      tags:
+      - users
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/users/{id}/ban/:
+    post:
+      operationId: website_v1_users_ban_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Пользователь.
+        required: true
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomUserRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CustomUserRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CustomUserRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUser'
+          description: ''
+  /api/website/v1/users/{id}/favorites/:
+    get:
+      operationId: website_v1_users_favorites_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Пользователь.
+        required: true
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUser'
+          description: ''
+  /api/website/v1/users/{id}/listings/:
+    get:
+      operationId: website_v1_users_listings_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Пользователь.
+        required: true
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUser'
+          description: ''
+  /api/website/v1/users/{id}/set-credentials/:
+    post:
+      operationId: website_v1_users_set_credentials_create
+      description: Админ меняет пароль и/или номер пользователя
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Пользователь.
+        required: true
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomUserRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CustomUserRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CustomUserRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUser'
+          description: ''
+  /api/website/v1/users/{id}/unban/:
+    post:
+      operationId: website_v1_users_unban_create
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Пользователь.
+        required: true
+      tags:
+      - website
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomUserRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CustomUserRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CustomUserRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomUser'
+          description: ''
+  /api/website/v1/users/change_password/:
+    post:
+      operationId: website_v1_users_change_password_create
+      description: Позволяет пользователю сбросить пароль
+      summary: Сброс пароля
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерТелаЗапроса:
+                value:
+                  old_password: '12345'
+                  new_password: '67890'
+                summary: Пример тела запроса
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерТелаЗапроса:
+                value:
+                  old_password: '12345'
+                  new_password: '67890'
+                summary: Пример тела запроса
+          multipart/form-data:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерТелаЗапроса:
+                value:
+                  old_password: '12345'
+                  new_password: '67890'
+                summary: Пример тела запроса
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                УспешныйСброс:
+                  value:
+                    status: true
+                    message: muvaffaqiyatli
+                    data: Пароль успешно обновлён
+                  summary: Успешный сброс
+          description: Успешный сброс
+  /api/website/v1/users/me/:
+    patch:
+      operationId: website_v1_users_me_partial_update
+      description: "\n                        Обновляет данные пользователя.\n   \
+        \                 "
+      summary: Update User
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерТелаЗапроса:
+                value:
+                  name: R
+                  bio: null
+                  language: uz
+                  contacts:
+                    contact_phone: null
+                    telegram: null
+                    whatsapp: null
+                summary: Пример тела запроса
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерТелаЗапроса:
+                value:
+                  name: R
+                  bio: null
+                  language: uz
+                  contacts:
+                    contact_phone: null
+                    telegram: null
+                    whatsapp: null
+                summary: Пример тела запроса
+          multipart/form-data:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерТелаЗапроса:
+                value:
+                  name: R
+                  bio: null
+                  language: uz
+                  contacts:
+                    contact_phone: null
+                    telegram: null
+                    whatsapp: null
+                summary: Пример тела запроса
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                УспешныйОтвет:
+                  value:
+                    detail: Update
+                  summary: Успешный ответ
+          description: Успешный Update
+  /api/website/v1/users/reset_password/:
+    post:
+      operationId: website_v1_users_reset_password_create
+      description: Позволяет пользователю сбросить пароль, подтвердив номер телефона
+        с помощью SMS-кода.
+      summary: Сброс пароля по телефону и SMS-коду
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерТелаЗапроса:
+                value:
+                  phone: '998901234567'
+                  code: '123456'
+                  new_password: NewSecurePassword123
+                summary: Пример тела запроса
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерТелаЗапроса:
+                value:
+                  phone: '998901234567'
+                  code: '123456'
+                  new_password: NewSecurePassword123
+                summary: Пример тела запроса
+          multipart/form-data:
+            schema:
+              type: object
+              additionalProperties: {}
+            examples:
+              ПримерТелаЗапроса:
+                value:
+                  phone: '998901234567'
+                  code: '123456'
+                  new_password: NewSecurePassword123
+                summary: Пример тела запроса
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+              examples:
+                УспешныйСброс:
+                  value:
+                    status: true
+                    message: muvaffaqiyatli
+                    data: Пароль успешно обновлён
+                  summary: Успешный сброс
+          description: Успешный сброс
+  /api/website/v1/views/:
+    get:
+      operationId: website_v1_views_list
+      description: Returns all views.
+      summary: Views list
+      tags:
+      - views
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Views'
+          description: ''
+    post:
+      operationId: website_v1_views_create
+      summary: Add a view
+      tags:
+      - views
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ViewsRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ViewsRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ViewsRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Views'
+          description: ''
+  /api/website/v1/views/{id}/:
+    get:
+      operationId: website_v1_views_retrieve
+      summary: Retrieve view by ID
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Просмотр.
+        required: true
+      tags:
+      - views
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Views'
+          description: ''
+    put:
+      operationId: website_v1_views_update
+      summary: Update a view
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Просмотр.
+        required: true
+      tags:
+      - views
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ViewsRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ViewsRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ViewsRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Views'
+          description: ''
+    patch:
+      operationId: website_v1_views_partial_update
+      summary: Update a view
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Просмотр.
+        required: true
+      tags:
+      - views
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedViewsRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedViewsRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedViewsRequest'
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Views'
+          description: ''
+    delete:
+      operationId: website_v1_views_destroy
+      summary: Delete a view
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Просмотр.
+        required: true
+      tags:
+      - views
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/website/v1/wallet/buy-subscription/:
+    post:
+      operationId: website_v1_wallet_buy_subscription_create
+      description: Списание из кошелька цены подписки и установка активной подписки
+        на 30 дней.
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/website/v1/wallet/eskiz-balance/:
+    get:
+      operationId: website_v1_wallet_eskiz_balance_retrieve
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/website/v1/wallet/me/:
+    get:
+      operationId: website_v1_wallet_me_retrieve
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/website/v1/wallet/pay-ad/:
+    post:
+      operationId: website_v1_wallet_pay_ad_create
+      description: |-
+        Списание из кошелька стоимости добавления объявления по категории.
+        Возвращает флаг/квитанцию, которой можно сразу пользоваться при создании объявления.
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/website/v1/wallet/transactions/:
+    get:
+      operationId: website_v1_wallet_transactions_retrieve
+      tags:
+      - website
+      security:
+      - jwtAuth: []
+      - BearerAuth: []
+      - cookieJWTAuth: []
+      responses:
+        '200':
+          description: No response body
+components:
+  schemas:
+    Banner:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 255
+        image:
+          type: string
+          format: uri
+        link:
+          type: string
+          format: uri
+          nullable: true
+          maxLength: 200
+        end_date:
+          type: string
+          format: date
+          nullable: true
+      required:
+      - id
+      - image
+      - title
+    BannerRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 255
+        image:
+          type: string
+          format: binary
+        link:
+          type: string
+          format: uri
+          nullable: true
+          maxLength: 200
+        end_date:
+          type: string
+          format: date
+          nullable: true
+      required:
+      - image
+      - title
+    BlankEnum:
+      enum:
+      - ''
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        is_paid:
+          type: boolean
+          title: Платная для просмотра (нужна подписка)
+        price:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        access:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - id
+      - name
+      - price
+    CategoryAdmin:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        uz:
+          type: string
+          maxLength: 100
+        ru:
+          type: string
+          maxLength: 100
+        en:
+          type: string
+          maxLength: 100
+        is_paid:
+          type: boolean
+          title: Платная для просмотра (нужна подписка)
+        ad_price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,10}(?:\.\d{0,2})?$
+          title: Цена добавления объявления (UZS)
+      required:
+      - en
+      - id
+      - ru
+      - uz
+    CategoryRequest:
+      type: object
+      properties:
+        is_paid:
+          type: boolean
+          title: Платная для просмотра (нужна подписка)
+    ChartPoint:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date
+          description: Дата
+        total:
+          type: number
+          format: double
+          description: Сумма за день
+        count:
+          type: integer
+          description: Количество за день
+      required:
+      - date
+    ChatList:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        interlocutor:
+          type: string
+          readOnly: true
+        last_message:
+          type: string
+          readOnly: true
+        unread_count:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - id
+      - interlocutor
+      - last_message
+      - unread_count
+    City:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - id
+      - name
+    CityRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+      required:
+      - name
+    CustomUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          nullable: true
+          maxLength: 150
+        phone:
+          type: string
+          maxLength: 20
+        photo:
+          type: string
+          readOnly: true
+        bio:
+          type: string
+          nullable: true
+        role:
+          $ref: '#/components/schemas/RoleEnum'
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        language:
+          $ref: '#/components/schemas/LanguageEnum'
+        contacts:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        balance:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - balance
+      - contacts
+      - created_at
+      - id
+      - phone
+      - photo
+      - updated_at
+    CustomUserCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+          maxLength: 150
+        photo:
+          type: string
+          format: binary
+          nullable: true
+        contact_phone:
+          type: string
+          writeOnly: true
+          nullable: true
+          maxLength: 20
+        bio:
+          type: string
+          nullable: true
+        telegram:
+          type: string
+          writeOnly: true
+          nullable: true
+          maxLength: 100
+        whatsapp:
+          type: string
+          writeOnly: true
+          nullable: true
+          maxLength: 100
+        language:
+          $ref: '#/components/schemas/LanguageEnum'
+        contacts:
+          type: object
+          additionalProperties: {}
+          writeOnly: true
+    CustomUserRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+          maxLength: 150
+        phone:
+          type: string
+          minLength: 1
+          maxLength: 20
+        bio:
+          type: string
+          nullable: true
+        role:
+          $ref: '#/components/schemas/RoleEnum'
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        language:
+          $ref: '#/components/schemas/LanguageEnum'
+      required:
+      - phone
+    Dashboard:
+      type: object
+      properties:
+        user_count:
+          type: integer
+          description: Всего пользователей
+        new_users_month:
+          type: integer
+          description: Новые пользователи за последние 30 дней
+        listing_count:
+          type: integer
+          description: Всего объявлений
+        active_listing_count:
+          type: integer
+          description: Активные объявления
+        promoted_listing_count:
+          type: integer
+          description: Продвигаемые объявления
+        views_count:
+          type: integer
+          description: Количество просмотров
+        favorites_count:
+          type: integer
+          description: Количество избранных
+        chats_count:
+          type: integer
+          description: Количество чатов
+        avg_listing_price:
+          type: number
+          format: double
+          description: Средняя цена объявлений
+        total_subscriptions:
+          type: integer
+          description: Количество активных подписок
+        new_subscriptions_month:
+          type: integer
+          description: Новые подписки за последние 30 дней
+        expiring_subscriptions_3days:
+          type: integer
+          description: Подписки, истекающие в ближайшие 3 дня
+        tariff_distribution:
+          type: array
+          items:
+            $ref: '#/components/schemas/TariffDistribution'
+          description: Распределение пользователей по тарифам
+        total_revenue:
+          type: number
+          format: double
+          description: Общий доход от подписок
+        monthly_revenue:
+          type: number
+          format: double
+          description: Доход за последние 30 дней
+        failed_payments:
+          type: integer
+          description: Количество неуспешных платежей
+        most_popular_category:
+          type: string
+          nullable: true
+          description: Самая популярная категория
+        most_active_user:
+          type: string
+          nullable: true
+          description: Самый активный пользователь по объявлениям
+        top_viewed_listing:
+          type: string
+          nullable: true
+          description: Самое просматриваемое объявление
+        monthly_new_listings:
+          type: integer
+          description: Новые объявления за последние 30 дней
+        revenue_chart:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChartPoint'
+          description: График дохода за последние 30 дней
+        users_chart:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChartPoint'
+          description: График новых пользователей за последние 30 дней
+        subscriptions_chart:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChartPoint'
+          description: График новых подписок за последние 30 дней
+      required:
+      - active_listing_count
+      - avg_listing_price
+      - chats_count
+      - expiring_subscriptions_3days
+      - failed_payments
+      - favorites_count
+      - listing_count
+      - monthly_new_listings
+      - monthly_revenue
+      - most_active_user
+      - most_popular_category
+      - new_subscriptions_month
+      - new_users_month
+      - promoted_listing_count
+      - revenue_chart
+      - subscriptions_chart
+      - tariff_distribution
+      - top_viewed_listing
+      - total_revenue
+      - total_subscriptions
+      - user_count
+      - users_chart
+      - views_count
+    District:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - id
+      - name
+    DistrictRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+      required:
+      - name
+    Favorites:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        listing_name:
+          type: string
+          readOnly: true
+        user_name:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        user:
+          type: integer
+        listing:
+          type: integer
+      required:
+      - created_at
+      - id
+      - listing
+      - listing_name
+      - updated_at
+      - user
+      - user_name
+    FavoritesRequest:
+      type: object
+      properties:
+        user:
+          type: integer
+        listing:
+          type: integer
+      required:
+      - listing
+      - user
+    Features:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        listing:
+          type: integer
+        features:
+          type: integer
+      required:
+      - features
+      - id
+      - listing
+    FeaturesCat:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+      required:
+      - id
+      - name
+    FeaturesRequest:
+      type: object
+      properties:
+        listing:
+          type: integer
+        features:
+          type: integer
+      required:
+      - features
+      - listing
+    LanguageEnum:
+      enum:
+      - ru
+      - en
+      - uz
+      type: string
+      description: |-
+        * `ru` - Russian
+        * `en` - English
+        * `uz` - Uzbek
+    Listing:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          type: integer
+        user_name:
+          type: string
+          readOnly: true
+        title:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+        category:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        price:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        transaction_type:
+          nullable: true
+          oneOf:
+          - $ref: '#/components/schemas/TransactionTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        specs:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        features:
+          type: array
+          items: {}
+          readOnly: true
+        mortgage_available:
+          type: boolean
+        nearby_list:
+          type: array
+          items: {}
+          readOnly: true
+        coordinates:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        status:
+          type: boolean
+        photos:
+          type: array
+          items: {}
+          readOnly: true
+        location:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        video:
+          type: string
+          format: uri
+          nullable: true
+        city:
+          type: integer
+          nullable: true
+        city_name:
+          type: string
+          readOnly: true
+        types:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        access:
+          type: string
+          readOnly: true
+        view_count:
+          type: integer
+          readOnly: true
+        share_count:
+          type: integer
+          readOnly: true
+        favorite_count:
+          type: integer
+          readOnly: true
+        is_favorite:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        user_data:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - category
+      - city_name
+      - coordinates
+      - created_at
+      - description
+      - favorite_count
+      - features
+      - id
+      - is_favorite
+      - location
+      - nearby_list
+      - photos
+      - price
+      - share_count
+      - specs
+      - title
+      - types
+      - user
+      - user_data
+      - user_name
+      - view_count
+    ListingMob:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user_name:
+          type: string
+          readOnly: true
+        title:
+          type: string
+          maxLength: 100
+        price:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        specs:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        coordinates:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        photos:
+          type: array
+          items: {}
+          readOnly: true
+        city_name:
+          type: string
+          readOnly: true
+        types:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        view_count:
+          type: integer
+          readOnly: true
+        share_count:
+          type: integer
+          readOnly: true
+      required:
+      - city_name
+      - coordinates
+      - id
+      - photos
+      - price
+      - share_count
+      - specs
+      - title
+      - types
+      - user_name
+      - view_count
+    ListingRequest:
+      type: object
+      properties:
+        user:
+          type: integer
+        title:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          minLength: 1
+        transaction_type:
+          nullable: true
+          oneOf:
+          - $ref: '#/components/schemas/TransactionTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        mortgage_available:
+          type: boolean
+        status:
+          type: boolean
+        video:
+          type: string
+          format: binary
+          nullable: true
+        city:
+          type: integer
+          nullable: true
+      required:
+      - description
+      - title
+      - user
+    Locations:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        price:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        latitude:
+          type: number
+          format: double
+          maximum: 1000
+          minimum: -1000
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+        longitude:
+          type: number
+          format: double
+          maximum: 1000
+          minimum: -1000
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+      required:
+      - id
+      - latitude
+      - longitude
+      - price
+    LocationsRequest:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          maximum: 1000
+          minimum: -1000
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+        longitude:
+          type: number
+          format: double
+          maximum: 1000
+          minimum: -1000
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+      required:
+      - latitude
+      - longitude
+    Login:
+      type: object
+      properties:
+        phone:
+          type: string
+      required:
+      - phone
+    LoginRequest:
+      type: object
+      properties:
+        phone:
+          type: string
+          minLength: 1
+        password:
+          type: string
+          writeOnly: true
+          minLength: 1
+      required:
+      - password
+      - phone
+    MapListing:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        title:
+          type: string
+          maxLength: 100
+        photos:
+          type: array
+          items: {}
+          readOnly: true
+        price:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        specs:
+          type: string
+          readOnly: true
+      required:
+      - id
+      - photos
+      - price
+      - specs
+      - title
+    Message:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        chat:
+          type: integer
+        sender:
+          type: integer
+        text:
+          type: string
+        images:
+          type: string
+          readOnly: true
+        is_read:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - chat
+      - created_at
+      - id
+      - images
+      - sender
+    MethodEnum:
+      enum:
+      - click
+      - payme
+      - uzum
+      - wallet
+      type: string
+      description: |-
+        * `click` - Click
+        * `payme` - Payme
+        * `uzum` - Uzum
+        * `wallet` - Wallet
+    Nearby:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+      required:
+      - id
+      - name
+    NearbyList:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        listing_name:
+          type: string
+          readOnly: true
+        nearby_name:
+          type: string
+          readOnly: true
+        listing:
+          type: integer
+        nearby:
+          type: integer
+      required:
+      - id
+      - listing
+      - listing_name
+      - nearby
+      - nearby_name
+    NearbyListRequest:
+      type: object
+      properties:
+        listing:
+          type: integer
+        nearby:
+          type: integer
+      required:
+      - listing
+      - nearby
+    NullEnum:
+      enum:
+      - null
+    PaginatedCustomUserList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomUser'
+    PaginatedListingList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Listing'
+    PaginatedListingMobList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=4
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?page=2
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListingMob'
+    PatchedBannerRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 255
+        image:
+          type: string
+          format: binary
+        link:
+          type: string
+          format: uri
+          nullable: true
+          maxLength: 200
+        end_date:
+          type: string
+          format: date
+          nullable: true
+    PatchedCategoryRequest:
+      type: object
+      properties:
+        is_paid:
+          type: boolean
+          title: Платная для просмотра (нужна подписка)
+    PatchedCityRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+    PatchedCustomUserCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+          maxLength: 150
+        photo:
+          type: string
+          format: binary
+          nullable: true
+        contact_phone:
+          type: string
+          writeOnly: true
+          nullable: true
+          maxLength: 20
+        bio:
+          type: string
+          nullable: true
+        telegram:
+          type: string
+          writeOnly: true
+          nullable: true
+          maxLength: 100
+        whatsapp:
+          type: string
+          writeOnly: true
+          nullable: true
+          maxLength: 100
+        language:
+          $ref: '#/components/schemas/LanguageEnum'
+        contacts:
+          type: object
+          additionalProperties: {}
+          writeOnly: true
+    PatchedDistrictRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+    PatchedFavoritesRequest:
+      type: object
+      properties:
+        user:
+          type: integer
+        listing:
+          type: integer
+    PatchedFeaturesRequest:
+      type: object
+      properties:
+        listing:
+          type: integer
+        features:
+          type: integer
+    PatchedListingRequest:
+      type: object
+      properties:
+        user:
+          type: integer
+        title:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          minLength: 1
+        transaction_type:
+          nullable: true
+          oneOf:
+          - $ref: '#/components/schemas/TransactionTypeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        mortgage_available:
+          type: boolean
+        status:
+          type: boolean
+        video:
+          type: string
+          format: binary
+          nullable: true
+        city:
+          type: integer
+          nullable: true
+    PatchedLocationsRequest:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          maximum: 1000
+          minimum: -1000
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+        longitude:
+          type: number
+          format: double
+          maximum: 1000
+          minimum: -1000
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+    PatchedNearbyListRequest:
+      type: object
+      properties:
+        listing:
+          type: integer
+        nearby:
+          type: integer
+    PatchedPaymentRequest:
+      type: object
+      properties:
+        category:
+          type: integer
+          nullable: true
+        listing:
+          type: integer
+          nullable: true
+        amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,10}(?:\.\d{0,2})?$
+        currency:
+          type: string
+          minLength: 1
+          maxLength: 3
+        method:
+          $ref: '#/components/schemas/MethodEnum'
+        payment_type:
+          $ref: '#/components/schemas/PaymentTypeEnum'
+    PatchedPhotoRequest:
+      type: object
+      properties:
+        photo:
+          type: string
+          format: binary
+          nullable: true
+        listing:
+          type: integer
+    PatchedSharesRequest:
+      type: object
+      properties:
+        listing:
+          type: integer
+    PatchedSubcriptionRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          minLength: 1
+        duration_days:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+    PatchedViewsRequest:
+      type: object
+      properties:
+        listing:
+          type: integer
+    Payment:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          type: integer
+          readOnly: true
+        category:
+          type: integer
+          nullable: true
+        listing:
+          type: integer
+          nullable: true
+        amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,10}(?:\.\d{0,2})?$
+        currency:
+          type: string
+          maxLength: 3
+        method:
+          $ref: '#/components/schemas/MethodEnum'
+        payment_type:
+          $ref: '#/components/schemas/PaymentTypeEnum'
+        is_paid:
+          type: boolean
+          readOnly: true
+        transaction_id:
+          type: string
+          readOnly: true
+          nullable: true
+      required:
+      - amount
+      - id
+      - is_paid
+      - method
+      - payment_type
+      - transaction_id
+      - user
+    PaymentRequest:
+      type: object
+      properties:
+        category:
+          type: integer
+          nullable: true
+        listing:
+          type: integer
+          nullable: true
+        amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,10}(?:\.\d{0,2})?$
+        currency:
+          type: string
+          minLength: 1
+          maxLength: 3
+        method:
+          $ref: '#/components/schemas/MethodEnum'
+        payment_type:
+          $ref: '#/components/schemas/PaymentTypeEnum'
+      required:
+      - amount
+      - method
+      - payment_type
+    PaymentStats:
+      type: object
+      properties:
+        total_users_paid:
+          type: integer
+        total_payments:
+          type: integer
+        total_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,10}(?:\.\d{0,2})?$
+        top_categories:
+          type: array
+          items: {}
+        total_categories_amount:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,10}(?:\.\d{0,2})?$
+        top_users:
+          type: array
+          items: {}
+      required:
+      - top_categories
+      - top_users
+      - total_amount
+      - total_categories_amount
+      - total_payments
+      - total_users_paid
+    PaymentTypeEnum:
+      enum:
+      - subscription
+      - ad
+      - topup
+      type: string
+      description: |-
+        * `subscription` - Подписка
+        * `ad` - Объявление
+        * `topup` - Пополнение
+    Photo:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        listing_name:
+          type: string
+          readOnly: true
+        photo:
+          type: string
+          format: uri
+          nullable: true
+        listing:
+          type: integer
+      required:
+      - id
+      - listing
+      - listing_name
+    PhotoRequest:
+      type: object
+      properties:
+        photo:
+          type: string
+          format: binary
+          nullable: true
+        listing:
+          type: integer
+      required:
+      - listing
+    RoleEnum:
+      enum:
+      - owner
+      - admin
+      - user
+      type: string
+      description: |-
+        * `owner` - Owner
+        * `admin` - Admin
+        * `user` - User
+    Shares:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        listing_name:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        listing:
+          type: integer
+      required:
+      - created_at
+      - id
+      - listing
+      - listing_name
+      - updated_at
+    SharesRequest:
+      type: object
+      properties:
+        listing:
+          type: integer
+      required:
+      - listing
+    StatusEnum:
+      enum:
+      - active
+      - banned
+      type: string
+      description: |-
+        * `active` - Active
+        * `banned` - Banned
+    Subcription:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        price:
+          type: object
+          additionalProperties: {}
+          readOnly: true
+        description:
+          type: string
+        duration_days:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        categories:
+          type: string
+          readOnly: true
+        tariff:
+          type: string
+          readOnly: true
+        remaining_days:
+          type: string
+          readOnly: true
+      required:
+      - categories
+      - description
+      - duration_days
+      - id
+      - name
+      - price
+      - remaining_days
+      - tariff
+    SubcriptionCreate:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,10}(?:\.\d{0,2})?$
+          title: Цена подписки (UZS)
+        description:
+          type: string
+        duration_days:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+      required:
+      - description
+      - duration_days
+      - id
+      - name
+    SubcriptionCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,10}(?:\.\d{0,2})?$
+          title: Цена подписки (UZS)
+        description:
+          type: string
+          minLength: 1
+        duration_days:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        categories:
+          type: array
+          items:
+            type: integer
+          writeOnly: true
+      required:
+      - description
+      - duration_days
+      - name
+    SubcriptionRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        description:
+          type: string
+          minLength: 1
+        duration_days:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+      required:
+      - description
+      - duration_days
+      - name
+    TariffDistribution:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Название тарифа
+        count:
+          type: integer
+          description: Количество пользователей
+      required:
+      - count
+      - name
+    TokenRefresh:
+      type: object
+      properties:
+        access:
+          type: string
+          readOnly: true
+      required:
+      - access
+    TokenRefreshRequest:
+      type: object
+      properties:
+        refresh:
+          type: string
+          writeOnly: true
+          minLength: 1
+      required:
+      - refresh
+    TokenVerifyRequest:
+      type: object
+      properties:
+        token:
+          type: string
+          writeOnly: true
+          minLength: 1
+      required:
+      - token
+    TransactionTypeEnum:
+      enum:
+      - sale
+      - rent
+      type: string
+      description: |-
+        * `sale` - Продажа
+        * `rent` - Аренда
+    TypeSell:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+      required:
+      - id
+      - name
+    Views:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        listing_name:
+          type: string
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        listing:
+          type: integer
+      required:
+      - created_at
+      - id
+      - listing
+      - listing_name
+      - updated_at
+    ViewsRequest:
+      type: object
+      properties:
+        listing:
+          type: integer
+      required:
+      - listing
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    cookieJWTAuth:
+      type: apiKey
+      in: cookie
+      name: access_token
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

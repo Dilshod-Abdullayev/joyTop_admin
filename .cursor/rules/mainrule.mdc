@@ -1,0 +1,346 @@
+---
+alwaysApply: true
+---
+## **Project Context**
+You are building a **Real Estate Admin Dashboard** from scratch using Next.js 15, React 19, and TypeScript. This is a complete rewrite of an existing broken codebase. The goal is to create a professional admin panel that gives admins full control over API-managed data and comprehensive reporting capabilities.
+
+## **Tech Stack & Architecture**
+- **Frontend**: Next.js 15 + React 19 + TypeScript 5
+- **Styling**: TailwindCSS 4 with custom design system
+- **UI Components**: Radix UI primitives + custom components
+- **State Management**: React hooks + Zustand (if needed)
+- **Charts**: Chart.js + react-chartjs-2
+- **Internationalization**: i18next (Uzbek, Russian) (whatever you are creating, always implement language suppor to that)
+- **Authentication**: Cookie-based JWT
+
+## **Code Quality Standards**
+
+### **File Organization**
+- **Keep files small**: Maximum 150 lines per component
+- **Single responsibility**: One component, one purpose
+- **Clear separation**: UI components, business logic, API calls
+- **Consistent naming**: PascalCase for components, camelCase for functions
+
+### **Component Structure**
+```typescript
+// Always use this pattern:
+export function ComponentName({ prop1, prop2 }: ComponentProps) {
+  // 1. Hooks first
+  const { data, loading } = useHook();
+  
+  // 2. Early returns for loading/error states
+  if (loading) return <LoadingSkeleton />;
+  if (error) return <ErrorMessage error={error} />;
+  
+  // 3. Main render logic
+  return (
+    <div className="space-y-4">
+      <ComponentHeader />
+      <ComponentContent data={data} />
+    </div>
+  );
+}
+```
+
+### **TypeScript Best Practices**
+- **Strict typing**: No `any` types, use proper interfaces
+- **API types**: Import from `@/types` based on API schema
+- **Component props**: Always define proper interfaces
+- **Error handling**: Use proper error types and validation
+
+### **Styling Guidelines**
+- **TailwindCSS only**: No custom CSS files
+- **Design system**: Use consistent spacing, colors, and components
+- **Responsive**: Mobile-first approach with proper breakpoints
+- **Accessibility**: Proper focus states, ARIA labels, keyboard navigation
+
+## **API Integration Patterns**
+
+### **API Service Structure**
+```typescript
+// src/lib/api/[domain].ts - Split by domain
+export const propertiesApi = {
+  getAll: async (params: PropertyFilters) => {
+    const response = await fetch(`/api/properties?${searchParams}`);
+    return response.json();
+  },
+  create: async (data: PropertyRequest) => {
+    const response = await fetch('/api/properties', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    });
+    return response.json();
+  }
+};
+```
+
+### **Data Fetching Hooks**
+```typescript
+// src/lib/hooks/use[Entity].ts
+export function useProperties(filters: PropertyFilters) {
+  const [data, setData] = useState<Property[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const result = await propertiesApi.getAll(filters);
+        setData(result);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchData();
+  }, [filters]);
+  
+  return { data, loading, error };
+}
+```
+
+## **Component Library Standards**
+
+### **UI Components**
+- **Base components**: Button, Input, Card, Modal, etc.
+- **Admin components**: DataTable, FilterPanel, SearchInput, etc.
+- **Chart components**: LineChart, BarChart, PieChart, etc.
+- **Layout components**: Sidebar, Header, MainContent, etc.
+
+### **Form Components**
+```typescript
+// Always use controlled inputs with proper validation
+export function PropertyForm({ initialData, onSubmit }: PropertyFormProps) {
+  const [formData, setFormData] = useState(initialData);
+  const [errors, setErrors] = useState<FormErrors>({});
+  
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    const validationErrors = validateForm(formData);
+    
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    
+    try {
+      await onSubmit(formData);
+    } catch (error) {
+      // Handle error
+    }
+  };
+  
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Form fields */}
+    </form>
+  );
+}
+```
+
+## **State Management Patterns**
+
+### **Local State**
+- **useState** for component-specific state
+- **useReducer** for complex state logic
+- **useContext** for shared state across components
+
+### **Global State (if needed)**
+```typescript
+// src/lib/stores/[store].ts
+import { create } from 'zustand';
+
+interface DashboardStore {
+  data: DashboardData | null;
+  loading: boolean;
+  error: string | null;
+  fetchData: () => Promise<void>;
+}
+
+export const useDashboardStore = create<DashboardStore>((set) => ({
+  data: null,
+  loading: false,
+  error: null,
+  fetchData: async () => {
+    set({ loading: true, error: null });
+    try {
+      const data = await dashboardApi.getData();
+      set({ data, loading: false });
+    } catch (error) {
+      set({ error: error.message, loading: false });
+    }
+  }
+}));
+```
+
+## **Error Handling Standards**
+
+### **API Error Handling**
+```typescript
+// Always handle errors gracefully
+try {
+  const data = await apiCall();
+  return data;
+} catch (error) {
+  console.error('API Error:', error);
+  throw new Error(getUserFriendlyMessage(error));
+}
+```
+
+### **Component Error Boundaries**
+```typescript
+// src/components/ErrorBoundary.tsx
+export function ErrorBoundary({ children }: { children: React.ReactNode }) {
+  const [hasError, setHasError] = useState(false);
+  
+  if (hasError) {
+    return (
+      <div className="p-6 text-center">
+        <h2 className="text-lg font-semibold text-red-600">Something went wrong</h2>
+        <button onClick={() => window.location.reload()}>Reload Page</button>
+      </div>
+    );
+  }
+  
+  return children;
+}
+```
+
+## **Performance Guidelines**
+
+### **Code Splitting**
+- **Lazy load** non-critical components
+- **Dynamic imports** for heavy libraries
+- **Route-based splitting** for pages
+
+### **Optimization**
+- **React.memo** for expensive components
+- **useMemo/useCallback** for expensive calculations
+- **Virtual scrolling** for large lists
+- **Image optimization** with Next.js Image component
+
+## **Internationalization Standards**
+
+### **Translation Structure**
+```typescript
+// src/locales/[language].json
+{
+  "dashboard": {
+    "title": "Dashboard",
+    "metrics": {
+      "properties": "Properties",
+      "users": "Users"
+    }
+  }
+}
+
+// Usage in components
+import { useTranslation } from 'react-i18next';
+
+export function DashboardTitle() {
+  const { t } = useTranslation();
+  return <h1>{t('dashboard.title')}</h1>;
+}
+```
+
+## **Testing & Quality**
+
+### **Code Quality**
+- **No console.log** in production code
+- **Proper error handling** everywhere
+- **Accessibility features** implemented
+- **Responsive design** for all screen sizes
+
+### **Performance Targets**
+- **Page load**: Under 2 seconds
+- **Component render**: Under 100ms
+- **API response**: Under 500ms
+- **Bundle size**: Under 500KB (gzipped)
+
+## **File Naming Conventions**
+
+### **Components**
+- **Page components**: `page.tsx`
+- **Layout components**: `layout.tsx`
+- **Feature components**: `[FeatureName].tsx`
+- **UI components**: `[ComponentName].tsx`
+
+### **Utilities**
+- **API services**: `[domain]Api.ts`
+- **Custom hooks**: `use[HookName].ts`
+- **Type definitions**: `[Entity]Types.ts`
+- **Utility functions**: `[functionName].ts`
+
+## **Development Workflow**
+
+### **Component Creation Process**
+1. **Define types** first
+2. **Create component skeleton**
+3. **Add business logic**
+4. **Style with TailwindCSS**
+5. **Add error handling**
+6. **Test responsiveness**
+7. **Add accessibility features**
+
+### **API Integration Process**
+1. **Define API types** from schema
+2. **Create API service** functions
+3. **Build custom hooks** for data fetching
+4. **Handle loading/error states**
+5. **Implement caching** if needed
+
+## **Common Patterns to Follow**
+
+### **Data Display**
+```typescript
+// Always show loading and error states
+export function DataDisplay() {
+  const { data, loading, error } = useData();
+  
+  if (loading) return <DataSkeleton />;
+  if (error) return <ErrorMessage error={error} />;
+  if (!data?.length) return <EmptyState />;
+  
+  return (
+    <div className="space-y-4">
+      {data.map(item => (
+        <DataItem key={item.id} item={item} />
+      ))}
+    </div>
+  );
+}
+```
+
+### **Form Handling**
+```typescript
+// Always validate and handle errors
+export function FormComponent() {
+  const [formData, setFormData] = useState(initialData);
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      await submitData(formData);
+    } catch (error) {
+      setErrors(parseErrors(error));
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+}
+```
+
+## **Remember**
+- **Keep it simple** - Don't over-engineer
+- **Focus on functionality** - Get it working first
+- **Write clean code** - Easy to maintain and extend
+- **Think mobile-first** - Responsive design from start
+- **Handle errors gracefully** - Better user experience
+- **Follow patterns** - Consistency across codebase

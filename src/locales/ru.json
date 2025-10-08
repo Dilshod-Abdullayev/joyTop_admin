@@ -1,0 +1,880 @@
+{
+  "common": {
+    "dashboard": "Панель управления",
+    "properties": "Недвижимость",
+    "users": "Пользователи",
+    "categories": "Категории",
+    "features": "Особенности",
+    "cities": "Города",
+    "districts": "Районы",
+    "analytics": "Аналитика",
+    "payments": "Платежи",
+    "tariffs": "Тарифы",
+    "banners": "Баннеры",
+    "pages": "Страницы",
+    "settings": "Настройки",
+    "search": "Поиск",
+    "language": "Язык",
+    "profile": "Профиль",
+    "logout": "Выйти",
+    "notifications": "Уведомления",
+    "retry": "Повторить",
+    "refresh": "Обновить",
+    "cancel": "Отмена",
+    "create": "Создать",
+    "update": "Обновить",
+    "delete": "Удалить",
+    "creating": "Создание...",
+    "updating": "Обновление...",
+    "deleting": "Удаление...",
+    "save": "Сохранить",
+    "saving": "Сохраняется...",
+    "loading": "Загрузка...",
+    "id": "ID",
+    "role": "Роль",
+    "details": "Детали",
+    "error": "Ошибка",
+    "errors": {
+      "loadingError": "Ошибка загрузки"
+    },
+    "actions": {
+      "edit": "Редактировать",
+      "delete": "Удалить",
+      "cancel": "Отмена"
+    }
+  },
+  "search": {
+    "placeholder": "Поиск по недвижимости, пользователям, категориям...",
+    "searching": "Поиск...",
+    "noResults": "Ничего не найдено",
+    "types": {
+      "property": "Недвижимость",
+      "user": "Пользователь",
+      "category": "Категория",
+      "city": "Город",
+      "tariff": "Тариф"
+    },
+    "tips": {
+      "title": "Поиск по:",
+      "properties": "Недвижимость",
+      "users": "Пользователи",
+      "cities": "Города",
+      "categories": "Категории"
+    }
+  },
+  "navigation": {
+    "overview": "Обзор",
+    "management": "Управление",
+    "reports": "Отчеты",
+    "system": "Tizim"
+  },
+  "actions": {
+    "add": "Добавить",
+    "edit": "Редактировать",
+    "delete": "Удалить",
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "view": "Просмотр"
+  },
+  "dashboard": {
+    "title": "Панель управления",
+    "subtitle": "Обзор статистики и аналитики платформы",
+    "stats": {
+      "totalUsers": "Всего пользователей",
+      "totalListings": "Всего объявлений",
+      "views": "Просмотры",
+      "chats": "Чаты",
+      "avgPrice": "Средняя цена",
+      "subscriptions": "Подписки",
+      "totalRevenue": "Общий доход",
+      "failedPayments": "Неудачные платежи"
+    },
+    "changes": {
+      "perMonth": "за месяц",
+      "active": "активных",
+      "favorites": "избранных",
+      "promoted": "продвигаемых",
+      "newListings": "новых объявлений",
+      "expiring3Days": "истекают через 3 дня"
+    },
+    "charts": {
+      "revenue30Days": "Доход по дням",
+      "newUsers": "Новые пользователи по дням",
+      "subscriptions": "Новые подписки по дням",
+      "revenueTrend": "Тренд дохода",
+      "noData": "Нет данных для отображения"
+    },
+    "additional": {
+      "popularCategory": "Популярная категория",
+      "activeUser": "Активный пользователь",
+      "popularListing": "Популярное объявление",
+      "noData": "Нет данных"
+    },
+    "tariffs": {
+      "title": "Распределение по тарифам",
+      "users": "пользователей"
+    },
+    "errors": {
+      "loadingError": "Ошибка загрузки",
+      "failedToLoad": "Не удалось загрузить данные дашборда"
+    },
+    "units": {
+      "million": "M",
+      "currency": "UZS",
+      "dollar": "$"
+    },
+    "chartLabels": {
+      "revenue": "Доход",
+      "users": "Пользователи",
+      "subscriptions": "Подписки",
+      "tariffs": "Тарифы"
+    },
+    "chartTooltips": {
+      "users": "пользователей",
+      "subscriptions": "подписок"
+    },
+    "chartSummary": {
+      "total": "Всего",
+      "average": "Среднее"
+    },
+    "trendChart": {
+      "revenue": "Доход",
+      "trend": "Тренд",
+      "growth": "Рост"
+    }
+  },
+  "auth": {
+    "login": "Вход в систему",
+    "phone": "Номер телефона",
+    "password": "Пароль",
+    "enter": "Войти",
+    "entering": "Вход...",
+    "phonePlaceholder": "998901234567",
+    "passwordPlaceholder": "Введите пароль",
+    "logout": "Выйти",
+    "profile": "Профиль",
+    "balance": "Баланс",
+    "contacts": "Контакты",
+    "admin": "Администратор",
+    "user": "Пользователь"
+  },
+  "properties": {
+    "title": "Управление недвижимостью",
+    "subtitle": "Управление объявлениями недвижимости",
+
+    "searchPlaceholder": "Поиск по названию или описанию...",
+    "filters": {
+      "title": "Фильтры",
+      "category": "Категория",
+      "city": "Город",
+      "transactionType": "Тип сделки",
+      "priceRange": "Диапазон цен",
+      "rooms": "Количество комнат",
+      "status": "Статус",
+      "apply": "Применить",
+      "clear": "Очистить"
+    },
+    "sorting": {
+      "title": "Сортировка",
+      "date": "По дате",
+      "price": "По цене",
+      "views": "По просмотрам",
+      "likes": "По лайкам"
+    },
+    "actions": {
+      "view": "Просмотр",
+      "edit": "Редактировать",
+      "delete": "Удалить",
+      "activate": "Активировать",
+      "deactivate": "Деактивировать",
+      "promote": "Продвигать"
+    },
+    "status": {
+      "active": "Активно",
+      "inactive": "Неактивно",
+      "pending": "На рассмотрении",
+      "rejected": "Отклонено"
+    },
+    "transactionTypes": {
+      "sale": "Продажа",
+      "rent": "Аренда",
+      "exchange": "Обмен"
+    },
+    "noProperties": "Объявления не найдены",
+    "loading": "Загрузка объявлений...",
+    "error": "Ошибка загрузки объявлений",
+    "details": {
+      "description": "Описание",
+      "specifications": "Характеристики",
+      "additionalSpecs": "Дополнительные характеристики",
+      "features": "Особенности",
+      "nearbyAmenities": "Рядом расположены",
+      "price": "Цена",
+      "mortgageAvailable": "Ипотека доступна",
+      "owner": "Владелец",
+      "location": "Расположение",
+      "statistics": "Статистика",
+      "propertyDetails": "Детали",
+      "contacts": "Контакты",
+      "backToList": "Назад к списку",
+      "loadingError": "Ошибка загрузки"
+    },
+    "specs": {
+      "area": "Площадь",
+      "livingArea": "Жилая площадь",
+      "lotArea": "Площадь участка",
+      "rooms": "Комнаты",
+      "bedrooms": "Спальни",
+      "bathrooms": "Ванные",
+      "toilets": "Туалеты",
+      "balconies": "Балконы",
+      "floor": "Этаж",
+      "totalFloors": "из",
+      "age": "Возраст",
+      "ceilingHeight": "Высота потолков",
+      "furnished": "Меблировано",
+      "airConditioning": "Кондиционер",
+      "parking": "Парковка",
+      "builtInKitchen": "Встроенная кухня",
+      "elevator": "Лифт",
+      "security": "Охрана",
+      "garage": "Гараж",
+      "renovation": "Ремонт",
+      "heating": "Отопление",
+      "hotWater": "Горячая вода",
+      "energyEfficiency": "Энергоэффективность",
+      "noiseLevel": "Уровень шума",
+      "yes": "Да",
+      "no": "Нет",
+      "years": "лет",
+      "meters": "м",
+      "squareMeters": "м²"
+    },
+    "user": {
+      "phone": "Телефон",
+      "additionalPhone": "Доп. телефон",
+      "bio": "О себе",
+      "balance": "Баланс",
+      "role": "Роль"
+    },
+    "metrics": {
+      "views": "Просмотры",
+      "favorites": "В избранном",
+      "shares": "Поделились"
+    },
+    "pagination": {
+      "showing": "Показано",
+      "of": "из",
+      "properties": "объявлений",
+      "results": "результатов",
+      "show": "Показать",
+      "previous": "Предыдущая",
+      "next": "Следующая"
+    },
+    "edit": {
+      "title": "Редактировать объявление",
+      "saving": "Сохранение...",
+      "save": "Сохранить",
+      "basicInfo": "Основная информация",
+      "titlePlaceholder": "Введите название объявления",
+      "category": "Категория",
+      "transactionType": "Тип сделки",
+      "price": "Цена",
+      "description": "Описание",
+      "descriptionPlaceholder": "Подробное описание недвижимости...",
+      "mortgageAvailable": "Ипотека доступна",
+      "active": "Активно",
+      "specifications": "Характеристики",
+      "features": "Особенности",
+      "location": "Расположение",
+      "media": "Медиа файлы",
+      "photos": "Фотографии",
+      "video": "Видео URL",
+      "videoPlaceholder": "https://example.com/video.mp4",
+      "city": "Город",
+      "district": "Район",
+      "districtPlaceholder": "ID района",
+      "buildingNumber": "Номер дома",
+      "buildingNumberPlaceholder": "Например: 123",
+      "nearbyAmenities": "Рядом расположены",
+      "amenityPlaceholder": "Например: Школа, Магазин",
+      "add": "Добавить",
+      "notSpecified": "Не указано",
+      "categories": {
+        "houses": "Дома",
+        "offices": "Офисы",
+        "land": "Земельные участки",
+        "rentalHouses": "Дома для аренды",
+        "rentalVillas": "Виллы для аренды",
+        "saleApartments": "Квартиры для продажи",
+        "commercial": "Коммерческие здания"
+      },
+      "transactionTypes": {
+        "sale": "Продажа",
+        "rent": "Аренда",
+        "exchange": "Обмен"
+      },
+      "renovationTypes": {
+        "none": "Без ремонта",
+        "cosmetic": "Косметический",
+        "capital": "Капитальный",
+        "euro": "Евроремонт"
+      },
+      "heatingTypes": {
+        "none": "Нет",
+        "gas": "Газовое",
+        "electric": "Электрическое",
+        "central": "Центральное"
+      },
+      "featureNames": {
+        "kitchen": "Кухня",
+        "garage": "Гараж",
+        "garden": "Сад",
+        "pool": "Бассейн",
+        "terrace": "Терраса/Балкон",
+        "security": "Безопасность",
+        "elevator": "Лифт",
+        "fireplace": "Камин",
+        "storage": "Склад",
+        "laundry": "Прачечная",
+        "playground": "Детская площадка",
+        "internet": "Интернет",
+        "solarPanels": "Солнечные панели",
+        "disabledAccess": "Доступ для инвалидов",
+        "petsAllowed": "Разрешены животные"
+      },
+      "cities": {
+        "tashkent": "Ташкент",
+        "samarkand": "Самарканд",
+        "khorezm": "Хорезм",
+        "bukhara": "Бухара",
+        "jizzakh": "Джизак",
+        "tashkentRegion": "Ташкентская область",
+        "tashkentCity": "Ташкент (город)",
+        "namangan": "Наманган",
+        "andijan": "Андижан"
+      }
+    }
+  },
+  "cities": {
+    "page": {
+      "title": "Управление городами",
+      "description": "Создавайте, редактируйте и управляйте городами в системе"
+    },
+    "search": {
+      "title": "Поиск городов",
+      "placeholder": "Поиск по названию города...",
+      "results": "Найдено {count} из {total} городов"
+    },
+    "table": {
+      "title": "Список городов",
+      "name": "Название",
+      "id": "ID",
+      "actions": "Действия",
+      "noCities": "Города не найдены",
+      "noCitiesDescription": "Создайте первый город, чтобы начать работу"
+    },
+    "fields": {
+      "name": "Название города"
+    },
+    "placeholders": {
+      "cityName": "Введите название города"
+    },
+    "validation": {
+      "nameRequired": "Название города обязательно",
+      "maxLength": "Максимум {max} символов"
+    },
+    "actions": {
+      "addCity": "Добавить город",
+      "create": "Создать",
+      "creating": "Создание...",
+      "update": "Обновить",
+      "updating": "Обновление...",
+      "delete": "Удалить",
+      "deleting": "Удаление..."
+    },
+    "modals": {
+      "create": {
+        "title": "Создать новый город"
+      },
+      "edit": {
+        "title": "Редактировать город"
+      },
+      "delete": {
+        "title": "Удалить город",
+        "confirmation": "Вы уверены, что хотите удалить город '{name}'?",
+        "warning": "Это действие нельзя отменить. Город будет удален навсегда."
+      }
+    },
+    "errors": {
+      "createFailed": "Не удалось создать город",
+      "updateFailed": "Не удалось обновить город",
+      "deleteFailed": "Не удалось удалить город"
+    }
+  },
+  "users": {
+    "page": {
+      "title": "Управление пользователями",
+      "description": "Просматривайте, редактируйте и управляйте пользователями системы"
+    },
+    "search": {
+      "placeholder": "Поиск пользователей...",
+      "filters": "Фильтры",
+      "addUser": "Добавить пользователя",
+      "clearFilters": "Очистить фильтры"
+    },
+    "filters": {
+      "role": "Роль",
+      "allRoles": "Все роли",
+      "status": "Статус",
+      "allStatuses": "Все статусы",
+      "language": "Язык",
+      "allLanguages": "Все языки"
+    },
+    "roles": {
+      "admin": "Администратор",
+      "moderator": "Модератор",
+      "user": "Пользователь"
+    },
+    "status": {
+      "active": "Активный",
+      "inactive": "Неактивный",
+      "banned": "Заблокирован"
+    },
+    "languages": {
+      "russian": "Русский",
+      "uzbek": "Узбекский"
+    },
+    "table": {
+      "user": "Пользователь",
+      "role": "Роль",
+      "status": "Статус",
+      "balance": "Баланс",
+      "contacts": "Контакты",
+      "created": "Создан",
+      "actions": "Действия",
+      "noUsers": "Пользователи не найдены",
+      "noUsersDescription": "Попробуйте изменить фильтры или поисковый запрос"
+    },
+    "actions": {
+      "view": "Просмотр",
+      "edit": "Редактировать",
+      "delete": "Удалить",
+      "activate": "Активировать",
+      "deactivate": "Деактивировать",
+      "confirmDelete": "Вы уверены, что хотите удалить этого пользователя?"
+    },
+    "view": {
+      "title": "Информация о пользователе",
+      "description": "Подробная информация о пользователе",
+      "back": "Назад",
+      "basicInfo": "Основная информация",
+      "contactInfo": "Контактная информация",
+      "accountInfo": "Информация об аккаунте",
+      "profilePhoto": "Фото профиля",
+      "statistics": "Статистика",
+      "fields": {
+        "name": "Имя",
+        "phone": "Телефон",
+        "role": "Роль",
+        "status": "Статус",
+        "language": "Язык",
+        "balance": "Баланс",
+        "bio": "Биография",
+        "contactPhone": "Контактный телефон",
+        "telegram": "Telegram",
+        "whatsapp": "WhatsApp",
+        "createdAt": "Создан",
+        "lastUpdated": "Последнее обновление",
+        "accountAge": "Возраст аккаунта",
+        "notSpecified": "Не указано"
+      },
+      "statuses": {
+        "active": "Активный",
+        "banned": "Заблокирован"
+      },
+      "roles": {
+        "owner": "Владелец",
+        "admin": "Администратор",
+        "user": "Пользователь"
+      },
+      "languages": {
+        "ru": "Русский",
+        "en": "Английский",
+        "uz": "Узбекский"
+      },
+      "confirmDelete": "Вы уверены, что хотите удалить этого пользователя?",
+      "deleteSuccess": "Пользователь успешно удален",
+      "deleteError": "Ошибка при удалении пользователя"
+    }
+  },
+  "categories": {
+    "title": "Категории",
+    "description": "Управление категориями недвижимости и их настройками",
+    "paid": "Платные",
+    "free": "Бесплатные",
+    "stats": {
+      "total": "Всего категорий",
+      "paid": "Платные категории",
+      "free": "Бесплатные категории"
+    },
+    "filters": {
+      "title": "Фильтры",
+      "all": "Все",
+      "paid": "Платные",
+      "free": "Бесплатные",
+      "clear": "Очистить фильтры",
+      "active": "Активные фильтры",
+      "search": "Поиск",
+      "status": "Статус",
+      "exactPrice": "Точная цена",
+      "minPrice": "Минимальная цена",
+      "maxPrice": "Максимальная цена",
+      "priceRange": "Диапазон цен",
+      "priceFilters": "Фильтры по цене"
+    },
+    "search": {
+      "placeholder": "Поиск по названию категории..."
+    },
+    "fields": {
+      "name": "Название",
+      "price": "Цена",
+      "adPrice": "Цена рекламы",
+      "status": "Статус"
+    },
+    "status": {
+      "paid": "Платный просмотр",
+      "free": "Бесплатный просмотр"
+    },
+    "create": {
+      "title": "Создать категорию",
+      "isPaid": "Платная категория",
+      "isPaidDescription": "Платные категории требуют подписку для просмотра объявлений",
+      "nameNote": "Примечание: Названия категорий управляются системой и не могут быть изменены здесь.",
+      "namePlaceholder": "Введите название категории"
+    },
+    "edit": {
+      "title": "Редактировать категорию",
+      "isPaid": "Платная категория",
+      "isPaidDescription": "Платные категории требуют подписку для просмотра объявлений",
+      "categoryInfo": "Информация о категории",
+      "note": "Примечание: Можно изменить только статус платная/бесплатная. Название и цена управляются системой.",
+      "categoryNames": "Названия категорий",
+      "currentValues": "Текущие значения"
+    },
+    "delete": {
+      "title": "Удалить категорию",
+      "description": "Вы уверены, что хотите удалить эту категорию? Это действие нельзя отменить.",
+      "warning": "Предупреждение",
+      "warningText": "Удаление этой категории может повлиять на существующие объявления и доступ пользователей."
+    },
+    "empty": {
+      "title": "Категории не найдены",
+      "description": "Начните с создания первой категории"
+    },
+    "actions": {
+      "create": "Создать категорию"
+    }
+  },
+  "settings": {
+    "page": {
+      "title": "Настройки",
+      "description": "Управление профилем и системными настройками"
+    },
+    "general": {
+      "title": "Общие настройки",
+      "description": "Системные настройки"
+    },
+    "profile": {
+      "title": "Настройки профиля",
+      "description": "Обновите личную информацию",
+      "name": "Имя",
+      "namePlaceholder": "Введите ваше имя",
+      "bio": "Биография",
+      "bioPlaceholder": "Краткая информация о себе",
+      "language": "Язык",
+      "languages": {
+        "uzbek": "Узбекский",
+        "russian": "Русский",
+        "english": "Английский"
+      },
+      "contactPhone": "Контактный телефон",
+      "telegram": "Telegram",
+      "whatsapp": "WhatsApp",
+      "update": "Обновить",
+      "updating": "Обновляется...",
+      "success": "Профиль успешно обновлен",
+      "error": "Ошибка при обновлении профиля"
+    },
+    "password": {
+      "title": "Смена пароля",
+      "description": "Регулярно меняйте пароль для безопасности",
+      "oldPassword": "Текущий пароль",
+      "oldPasswordPlaceholder": "Введите текущий пароль",
+      "newPassword": "Новый пароль",
+      "newPasswordPlaceholder": "Введите новый пароль",
+      "confirmPassword": "Подтвердите пароль",
+      "confirmPasswordPlaceholder": "Повторите новый пароль",
+      "change": "Сменить пароль",
+      "changing": "Меняется...",
+      "success": "Пароль успешно изменен",
+      "error": "Ошибка при смене пароля",
+      "mismatch": "Новые пароли не совпадают",
+      "tooShort": "Пароль должен содержать минимум 8 символов"
+    }
+  },
+  "payments": {
+    "title": "Платежи",
+    "description": "Статистика и анализ платежей",
+    "stats": {
+      "totalUsersPaid": "Всего пользователей с платежами",
+      "totalPayments": "Всего платежей",
+      "totalAmount": "Общая сумма",
+      "categoriesAmount": "Сумма по категориям",
+      "activeUsers": "Активные пользователи",
+      "transactions": "Транзакции",
+      "revenue": "Доход",
+      "categoryRevenue": "Доход по категориям"
+    },
+    "filters": {
+      "title": "Фильтры",
+      "dateFrom": "Дата с",
+      "dateTo": "Дата по",
+      "minAmount": "Минимальная сумма",
+      "clear": "Очистить",
+      "apply": "Применить"
+    },
+    "charts": {
+      "topCategories": "Топ категории",
+      "description": "Платежи по категориям",
+      "noData": "Нет данных",
+      "noCategories": "Данные по категориям не найдены",
+      "ofTotal": "от общего",
+      "totalRevenue": "Общий доход"
+    },
+    "tables": {
+      "topUsers": "Топ пользователи",
+      "description": "Пользователи с наибольшими платежами",
+      "noData": "Нет данных",
+      "noUsers": "Данные по пользователям не найдены",
+      "anonymous": "Анонимный",
+      "totalUsers": "Всего пользователей",
+      "totalAmount": "Общая сумма"
+    },
+    "empty": {
+      "title": "Данные о платежах недоступны",
+      "description": "Статистика платежей появится здесь"
+    },
+    "errors": {
+      "loadingError": "Ошибка загрузки данных о платежах"
+    }
+  },
+  "tariffs": {
+    "title": "Тарифы",
+    "description": "Управление тарифами и подписками",
+    "stats": {
+      "total": "Всего тарифов",
+      "totalUsers": "Всего пользователей",
+      "totalRevenue": "Общий доход",
+      "activeTariffs": "Активные тарифы",
+      "subscribedUsers": "Подписчики",
+      "monthlyRevenue": "Месячный доход"
+    },
+    "filters": {
+      "title": "Фильтры",
+      "search": "Поиск",
+      "searchPlaceholder": "Название тарифа...",
+      "minPrice": "Минимальная цена",
+      "maxPrice": "Максимальная цена",
+      "duration": "Продолжительность (дни)",
+      "clear": "Очистить",
+      "apply": "Применить"
+    },
+    "list": {
+      "title": "Список тарифов"
+    },
+    "fields": {
+      "name": "Название",
+      "price": "Цена",
+      "duration": "Продолжительность",
+      "categories": "Категории",
+      "actions": "Действия",
+      "days": "дней",
+      "noCategories": "Нет категорий"
+    },
+    "placeholders": {
+      "name": "Например: Premium",
+      "description": "Подробная информация о тарифе...",
+      "categories": "Разделите ID категорий запятыми",
+      "categoriesSelect": "Выберите категории",
+      "noCategories": "Категории не найдены",
+      "priceNote": "Цена указывается в UZS"
+    },
+    "create": {
+      "title": "Создать новый тариф"
+    },
+    "edit": {
+      "title": "Редактировать тариф"
+    },
+    "delete": {
+      "title": "Удалить тариф",
+      "confirmation": "тариф?",
+      "warning": "Это действие нельзя отменить. Тариф будет удален навсегда."
+    },
+    "empty": {
+      "title": "Тарифы не найдены",
+      "description": "Начните с создания первого тарифа"
+    },
+    "actions": {
+      "create": "Создать тариф"
+    },
+    "errors": {
+      "loadingError": "Ошибка загрузки данных о тарифах"
+    }
+  },
+  "eskiz": {
+    "title": "Баланс Eskiz",
+    "description": "Информация о балансе SMS сервиса Eskiz",
+    "balance": "Баланс",
+    "accountInfo": "Информация об аккаунте",
+    "companyName": "Название компании",
+    "email": "Email",
+    "status": "Статус",
+    "isVip": "VIP статус",
+    "createdAt": "Создан",
+    "updatedAt": "Обновлен",
+    "refresh": "Обновить баланс",
+    "refreshing": "Обновление...",
+    "noData": "Данные недоступны",
+    "loading": "Загрузка...",
+    "error": "Ошибка загрузки данных",
+    "retry": "Повторить",
+    "statuses": {
+      "active": "Активный"
+    },
+    "roles": {
+      "user": "Пользователь"
+    },
+    "vipStatus": {
+      "true": "VIP",
+      "false": "Обычный"
+    }
+  },
+  "pages": {
+    "title": "Страницы",
+    "description": "Управление страницами веб-сайта",
+    "createNew": "Создать страницу",
+    "editPage": "Редактировать страницу",
+    "deletePage": "Удалить страницу",
+    "slug": "Slug",
+    "pageTitle": "Заголовок",
+    "content": "Содержание",
+    "created": "Создано",
+    "updated": "Обновлено",
+    "language": "Язык",
+    "current": "Текущий",
+    "allLanguages": "Все языки",
+    "pageDetails": "Детали страницы",
+    "deleteWarning": "Вы уверены, что хотите удалить эту страницу? Это действие нельзя отменить.",
+    "deleteConfirmation": "Страница с slug '{slug}' будет удалена навсегда.",
+    "titlePlaceholder": {
+      "ru": "Заголовок страницы на русском",
+      "uz": "Заголовок страницы на узбекском",
+      "en": "Заголовок страницы на английском"
+    },
+    "searchPlaceholder": "Поиск страниц...",
+    "noPages": "Нет страниц",
+    "noPagesDescription": "Создайте первую страницу для отображения на сайте",
+    "noResults": "Результаты не найдены",
+    "noResultsDescription": "По вашему запросу не найдено страниц",
+    "createFirst": "Создать первую страницу",
+    "viewFullPage": "Просмотр полной страницы",
+    "backToPages": "Назад к страницам",
+    "notFound": "Страница не найдена",
+    "pageNotFound": "Страница с slug '{slug}' не найдена",
+    "error": "Произошла ошибка",
+    "contentPlaceholder": {
+      "uz": "Содержание страницы (узбекский)",
+      "ru": "Содержание страницы (русский)",
+      "en": "Содержание страницы (английский)"
+    },
+    "markdown": {
+      "supported": "Поддерживается Markdown",
+      "examples": {
+        "heading": "# Заголовок",
+        "bold": "**жирный**",
+        "italic": "*курсив*",
+        "link": "[ссылка](url)",
+        "code": "`код`",
+        "list": "- список"
+      }
+    },
+    "languages": {
+      "uz": "Узбекский",
+      "ru": "Русский",
+      "en": "Английский"
+    }
+  },
+  "statistics": {
+    "title": "Статистика",
+    "subtitle": "Детальная аналитика платформы",
+    "actions": {
+      "refresh": "Обновить",
+      "export": "Экспорт",
+      "retry": "Повторить",
+      "testApi": "Тестировать API"
+    },
+    "errors": {
+      "loadingError": "Ошибка загрузки",
+      "failedToLoad": "Не удалось загрузить статистику"
+    },
+    "filters": {
+      "title": "Фильтры",
+      "period": "Период",
+      "dateFrom": "Дата от",
+      "dateTo": "Дата до",
+      "apply": "Применить",
+      "reset": "Сбросить",
+      "periods": {
+        "day": "День",
+        "week": "Неделя",
+        "month": "Месяц",
+        "year": "Год"
+      }
+    },
+    "general": {
+      "title": "Общая статистика",
+      "noData": "Нет данных",
+      "totalUsers": "Всего пользователей",
+      "totalListings": "Всего объявлений",
+      "totalViews": "Всего просмотров",
+      "totalFavorites": "Всего избранных",
+      "totalChats": "Всего чатов",
+      "activeListings": "Активные объявления"
+    },
+    "payments": {
+      "title": "Статистика платежей",
+      "noData": "Нет данных",
+      "totalUsersPaid": "Пользователей заплатили",
+      "totalPayments": "Всего платежей",
+      "totalAmount": "Общая сумма",
+      "topCategoriesByPayments": "Топ категории по платежам",
+      "topUsersByPayments": "Топ пользователи по платежам",
+      "paymentDetails": {
+        "title": "Детали платежей",
+        "totalUsers": "Пользователей заплатили",
+        "totalPayments": "Всего платежей"
+      }
+    },
+    "tariffs": {
+      "title": "Статистика тарифов",
+      "noData": "Нет данных",
+      "totalSubscriptions": "Всего подписок",
+      "activeSubscriptions": "Активные подписки",
+      "expiringSubscriptions": "Истекающие подписки",
+      "tariffDistribution": {
+        "title": "Распределение тарифов"
+      }
+    }
+  }
+}
